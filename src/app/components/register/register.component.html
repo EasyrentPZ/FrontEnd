@@ -1,13 +1,15 @@
 <!-- home.component.html -->
 
 <div class="register">
-  <div class="background-image"><img src="https://i.ibb.co/MR5ZVpM/obraz-2024-01-03-194212962.png" alt="Background photo"></div>
+  <div class="background-image"><img src="https://i.ibb.co/RPRhkpr/bg-easy.jpg" alt="Background photo"></div>
   <div class="header">
     <div class="menu">
-      <div class="logo" (click)="returnHome()">EasyRent</div>
+      <div class="logo" (click)="returnHome()">
+        <img src="https://i.ibb.co/2nLqX0c/logo-easy.png" alt="EasyRent Logo">
+      </div>
       <div class="menu-items">
-        <div class="menu-item" (click)="redirectSection('tutorial')">Początek</div>
-        <div class="menu-item" (click)="redirectSection('info')">Informacje</div>
+        <div class="menu-item" (click)="scrollToSection('info')">Szukaj mieszkań</div>
+        <div class="menu-item" (click)="returnHome()">Informacje</div>
         <div class="menu-item" (click)="redirectToLogin()">Logowanie</div>
       </div>
       <div class="user-icon"></div>
