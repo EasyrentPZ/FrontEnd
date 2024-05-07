@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { ApartmentService } from 'src/app/services/apartment.service';
 import { MessageService } from 'primeng/api';
+import { Property } from 'src/app/shared/Property';
 
 
 
@@ -11,6 +12,18 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./owner-apartments.component.css']
 })
 export class OwnerApartmentsComponent implements OnInit {
+
+
+  properties = [
+    new Property("Mieszkanie 60m2", "Spokojna", "9", "desc", 1000, 1000, 2000),
+    new Property("Mieszkanie 20m2", "Zielona", "1/11", "desc", 1400, 1200, 200),
+    new Property("Mieszkanie 20m2", "Zielona", "1/11", "desc", 1400, 1200, 200),
+    new Property("Mieszkanie 20m2", "Zielona", "1/11", "desc", 1400, 1200, 200),
+    new Property("Mieszkanie 20m2", "Zielona", "1/11", "desc", 1400, 1200, 200),
+    new Property("Mieszkanie 20m2", "Zielona", "1/11", "desc", 1400, 1200, 200),
+    new Property("Mieszkanie 100m2", "Spokojna", "9", "desc", 9000, 1000, 2000)
+  ];
+
   apartments: any = {};
   newApartment: any = { address: '', note: '' };
   constructor(

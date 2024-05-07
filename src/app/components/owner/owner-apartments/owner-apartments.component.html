@@ -1,29 +1,33 @@
 <!-- owner-apartments.component.html -->
-<div class="apartments">
-  <div *ngIf="!apartments.empty; else noApartments">
-    <h1>Twoje mieszkania</h1>
-    <div *ngFor="let apartment of apartments.content" class="apartment" (click)="onApartmentClick(apartment.id)">
-      <h2>Mieszkanie</h2>
-      <p>Adresa: {{ apartment.address }}</p>
-      <p>Informacje: {{ apartment.note }}</p>
-      <button (click)="deleteApartment($event, apartment.id)">Usuń mieszkanie</button>
+<div class="container">
+  <div class="content flex-column-centered">
+    <div class="section-header div-with-bottom-border">Moje mieszkania</div>
+    <div class="apartments">
+      <div *ngFor="let property of properties" class="apartment-view div-with-bottom-border">
+        <img class="apartment-photo"
+          src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg"
+          alt="Photo">
+        <div class="flex-item apartment-details">
+          <h2>{{property.name}}</h2>
+          <span>ul. {{property.street}} {{property.buildingNo}}</span>
+          <div class="apartment-action">
+            <img src="assets/icons/Edit-apartment.svg" alt="apartment" />
+            <img src="assets/icons/Bill.svg" alt="bills" />
+            <img src="assets/icons/Report-black.svg" alt="reports" />
+          </div>
+        </div>
+        <div class="apartment-inhabitants">
+          <img src="assets/icons/Inhabitants.svg" alt="Inhabitants" />
+          3
+        </div>
+      </div>
+
+      <div class="add-apartment">
+        <div class="add-apartment-button">
+          <img src="assets/icons/Add-apartment.svg" alt="add" />
+          Dodaj mieszkanie
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<ng-template #noApartments>
-  <p>Brak dostępnych mieszkań.</p>
-</ng-template>
-
-<div class="add-apartment">
-  <h2>Dodaj nowe mieszkanie</h2>
-  <form (ngSubmit)="addApartment()" #apartmentForm="ngForm">
-    <label for="address">Adres:</label>
-    <input type="text" id="address" name="address" [(ngModel)]="newApartment.address" required>
-
-    <label for="note">Informacje:</label>
-    <textarea id="note" name="note" [(ngModel)]="newApartment.note"></textarea>
-
-    <button type="submit">Dodaj mieszkanie</button>
-  </form>
 </div>

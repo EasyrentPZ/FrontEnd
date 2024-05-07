@@ -1,62 +1,57 @@
-<div class="reports-container">
-    <h3>Reported Problems</h3>
-    <div class="report-list">
-      <!-- Repeat this block for each reported problem -->
-      <div class="report-item" data-urgency="yellow">
-        <span class="report-icon"></span>
-        <div class="report-content">
-          <h4 class="problem-title">Leaking Faucet</h4>
-          <p class="problem-details">The kitchen faucet is leaking and needs to be fixed.</p>
-          <p class="report-date">Reported on: 2024-01-08</p>
-          <p class="tenant-info">Reported by: John Doe - johndoe@example.com</p>
-          <div class="report-status">
-            <label for="statusSelect">Status:</label>
-            <select id="statusSelect" name="status">
-              <option value="opened">Opened</option>
-              <option value="solved">Solved</option>
-              <option value="closed">Closed</option>
-            </select>
+<div class="container">
+<div class="content flex-column-centered">
+<div class="fill-div">
+    <div class="report-header">
+      <div class="flex-row-centered report-header-image">
+        <img src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg" alt="Photo">
+      </div>
+      <div class="report-header-details">
+        <span class="header-details-title">{{property.name}}</span>
+        <span class="header-details-element">ul. {{property.street}} {{property.buildingNo}}</span>
+      </div>
+    </div>
+    <div class="sections-wrapper">
+      <div id="announcements">
+        <div class="section-header div-with-bottom-border">Ogłoszenia</div>
+        <div class="announcements-details">
+          <div *ngFor="let announcement of announcements" class="single-announcement div-with-bottom-border">
+            <div class="single-announcement-details">
+              <div class="single-announcement-header">{{announcement.title}}</div>
+              <div class="single-announcement-description">{{announcement.description}}</div>
+            </div>
+            <div class="single-announcement-actions">
+              <div class="single-announcement-actions-button delete-button">
+                Usuń
+              </div>
+              <div class="single-announcement-actions-button">
+                Edytuj
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="report-item" data-urgency="red">
-        <span class="report-icon"></span>
-        <div class="report-content">
-          <h4 class="problem-title">Leaking Faucet</h4>
-          <p class="problem-details">The kitchen faucet is leaking and needs to be fixed.</p>
-          <p class="report-date">Reported on: 2024-01-08</p>
-          <p class="tenant-info">Reported by: John Doe - johndoe@example.com</p>
-          <div class="report-status">
-            <label for="statusSelect">Status:</label>
-            <select id="statusSelect" name="status">
-              <option value="opened">Opened</option>
-              <option value="solved">Solved</option>
-              <option value="closed">Closed</option>
-            </select>
+      <div class="reports">
+        <div class="section-header div-with-bottom-border">Zgłoszenia</div>
+        <div class="announcements-details">
+          <div *ngFor="let report of reports" class="single-announcement div-with-bottom-border">
+            <div class="single-announcement-details">
+              <div class="single-announcement-header">Zgłoszenie nr {{report.id}}</div>
+              <div class="report-status">
+                <label for="statusSelect">Status:</label>
+                <select class="statusSelect" name="status" (change)="updateBackgroundColor($event)">
+                  <option value="opened" style="background-color: #5cb85c;">Opened</option>
+                  <option value="solved" style="background-color: #f0ad4e;">Solved</option>
+                  <option value="closed" style="background-color: #d9534f;">Closed</option>
+              </select>
+              </div>
+              <div class="single-announcement-description">{{report.description}}</div>
+            </div>
           </div>
         </div>
       </div>
-
-
-      <div class="report-item" data-urgency="green">
-        <span class="report-icon"></span>
-        <div class="report-content">
-          <h4 class="problem-title">Leaking Faucet</h4>
-          <p class="problem-details">The kitchen faucet is leaking and needs to be fixed.</p>
-          <p class="report-date">Reported on: 2024-01-08</p>
-          <p class="tenant-info">Reported by: John Doe - johndoe@example.com</p>
-          <div class="report-status">
-            <label for="statusSelect">Status:</label>
-            <select id="statusSelect" name="status">
-              <option value="opened">Opened</option>
-              <option value="solved">Solved</option>
-              <option value="closed">Closed</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <!-- ... Other reported problems ... -->
     </div>
   </div>
+</div>
+</div>
   

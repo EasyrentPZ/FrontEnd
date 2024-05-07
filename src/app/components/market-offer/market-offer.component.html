@@ -1,0 +1,70 @@
+<!-- market-offer.component.html -->
+
+<div class="market-search">
+  <app-menu [menuType]="'unregistered'"></app-menu>
+  
+  <div class="container">
+    <div class="content flex-column-centered">
+        <div class="offer-header">
+          <div class="flex-row-centered offer-header-images">
+            <img class="offer-header-images-slider" src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg" alt="Photo">
+          </div>
+          <div class="offer-header-details">
+            <span class="header-details-title">{{property.name}}</span>
+            <span class="header-details-element">Koszt najmu: {{property.rent}} PLN/msc</span>
+            <span class="header-details-element">Media: {{property.utilityCosts}} PLN/msc</span>
+            <span class="header-details-element">Kaucja: {{property.deposit}} PLN</span>
+            <span class="cost-span">Łącznie: {{property.getFullCost()}} PLN</span>
+          </div>
+        </div>
+        <div class="offer-body">
+          <div class="owner-area flex-column-centered div-with-right-border">
+            <div class="owner-photo">
+              <img src={{owner.image}} alt="Your Image">
+            </div>
+            <span class="owner-name">{{owner.name}}</span>
+            <div class="contact-button flex-row-centered">
+              <img src="assets/icons/phone-icon.svg" class="contact-button-icon" alt="phone">
+              Zadzwoń
+            </div>
+            <div class="contact-button flex-row-centered">
+              <img src="assets/icons/email-icon.svg" class="contact-button-icon" alt="email">
+              Napisz
+            </div>
+          </div>
+          <div class="offer-details flex-column-centered">
+            <div class="offer-properties flex-row-centered">
+              <div class="offer-property-icon flex-column-centered">
+                <img src="assets/icons/properties/surface.svg" alt="surface">
+                <span>60m<sup>2</sup></span>
+              </div>
+              <div class="offer-property-icon flex-column-centered">
+                <img src="assets/icons/properties/surface.svg" alt="surface">
+                <span>60m<sup>2</sup></span>
+              </div>
+              <div class="offer-property-icon flex-column-centered">
+                <img src="assets/icons/properties/surface.svg" alt="surface">
+                <span>60m<sup>2</sup></span>
+              </div>
+            </div>
+            <div class="offer-desc ">
+              <div class="description-title div-with-bottom-border">Opis</div>
+              <div class="description-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Pellentesque massa placerat duis ultricies lacus sed
+                turpis tincidunt. Ac tortor vitae purus faucibus ornare
+                suspendisse sed nisi. Porttitor massa id neque aliquam
+                vestibulum morbi. Et tortor consequat id porta nibh
+                venenatis. Quis viverra nibh cras pulvinar mattis nunc sed
+                blandit. Fermentum leo vel orci porta non. Ut etiam sit amet
+                nisl. Adipiscing tristique risus nec feugiat in fermentum
+                posuere urna.
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+  

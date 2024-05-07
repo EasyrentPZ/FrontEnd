@@ -1,0 +1,13 @@
+<div class="header">
+    <div class="menu">
+      <div class="logo">
+        <img src="https://i.ibb.co/2nLqX0c/logo-easy.png" alt="EasyRent Logo">
+      </div>
+      <div class="menu-items">
+        <div class="menu-item" *ngFor="let menuItem of menuItems" (click)="handleMenuItemClicked(menuItem.link)">
+          {{ menuItem.label }}
+        </div>
+      </div>      
+      <div class="user-icon"></div>
+    </div>
+</div>

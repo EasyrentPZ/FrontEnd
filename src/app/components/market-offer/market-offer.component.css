@@ -1,38 +1,10 @@
-.report-status {
-  margin-top: 10px;
-}
-  
-.report-status label {
-  margin-right: 10px;
-}
-  
-.report-status select {
-  padding: 5px;
-  border: none;
-  border-radius: 30px;
-}
-  
-.report-status select[name="status"] {
-  color: #fff;
-  background-color: #5cb85c; 
-}
-  
-.report-status  select[name="status"] option[value="opened"] {
-  background-color: #5cb85c;
-}
-  
-.report-status  select[name="status"] option[value="solved"] {
-  background-color: #f0ad4e; 
-}
-  
-.report-status  select[name="status"] option[value="closed"] {
-  background-color: #d9534f; 
-}
+/* market-offer.component.css */
 
+  
 .header {
-  position: fixed;
-  width: 100%;
-  z-index: 1;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
   
 .menu {
@@ -89,6 +61,17 @@
   cursor: pointer;
 }
   
+.container {
+  background: rgb(247,247,247);
+  background: linear-gradient(180deg, rgba(247,247,247,1) 0%, rgba(241,241,244,1) 7%, rgba(109,152,174,1) 52%, rgba(64,122,151,1) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding-top: 77px; /* Wysokość menu */
+}
+  
 .content {
   display: flex;
   text-align: center;
@@ -143,23 +126,23 @@
 }
 
 
-.report-header{
+.offer-header{
   display: flex;
   height: 40%;
   width: 100%;
 }
 
-.report-header-details,
-.report-header-image{
+.offer-header-details,
+.offer-header-images{
   padding: 40px 0;
 }
 
-.report-header-image{
+.offer-header-images{
   width: 40%;
   height: 100%;
 }
 
-.report-header-details{
+.offer-header-details{
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -167,116 +150,103 @@
 
 }
 
-.report-header-image img{
+.offer-header-images-slider{
   border-radius: 15px;
   width: 100%;
 }
 
-.report-header-details span {
+.offer-header-details span {
   margin: 5px;
   display: block; /* Display each <h3> and <span> element as a block to ensure it appears on a new line */
   align-self: flex-start;
-}
-
-.header-details-title{
-  font-size: 1.8em;
-  font-weight: 600;
 }
 
 .header-details-element{
   font-size: 1.4em;
 }
 
-.ng-star-inserted{
-  height: 100%;
-  width:100%;
+.cost-span{
+  font-weight: bolder;
+  font-size: 1.6em;
 }
 
-.section-header{
+.header-details-title{
+  font-weight: bolder;
   font-size: 2em;
-  font-weight: bold;
-  padding: 0 5%;
-  text-align: left;
 }
 
-.single-announcement{
-  padding: 5px 5%;
-  text-align: left;
-  display: flex;
-}
-
-.single-announcement-header{
-  font-size: 1.4em;
-  font-weight: 500;
-  color: red;
-}
-
-.single-announcement-details{
-width: 70%;
-}
-.single-announcement-actions{
-  display: flex;
-  flex-direction: column;
+.offer-body{
   flex-grow: 1;
-  align-items: flex-end;
-  gap: 20px;
-}
-
-.single-announcement-actions-button{
-  font-size: 1.4em;
-  font-weight: bold;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.delete-button{
-  color: red;
-}
-.fill-div{
-  height: 100%;
   display: flex;
-  flex-direction: column;
+  width: 100%;
+}
+
+.owner-area{
+  width: 30%;
+  justify-content: center;
   gap: 30px;
 }
-.sections-wrapper{
-  flex-grow: 1;
+
+.owner-photo{
+  width: 150px; /* Set width and height for the circular container */
+  height: 150px;
+  border-radius: 50%; /* Make the container circular */
+  overflow: hidden;
+}
+
+.owner-photo img{
+  width: 100%; /* Make the image fill the container */
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  object-fit: cover; /* Ensure the image covers the entire container */
 }
 
-#announcements, #reports{
-  height: 50%;
-  overflow: auto;
+.owner-name{
+  font-size: 2em;
 }
 
-.container {
-  background: rgb(247,247,247);
-  background: linear-gradient(180deg, rgba(247,247,247,1) 0%, rgba(241,241,244,1) 7%, rgba(109,152,174,1) 52%, rgba(64,122,151,1) 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding-top: 10vh; /* Wysokość menu */
-  padding-bottom: 10vh;
-}
-
-.flex-column-centered{
-  display: flex;
-  align-items: center;
-
-  flex-direction: column;
-}
-  
-.content {
-  display: flex;
-  text-align: center;
-  /* Wysokość ekranu minus wysokość menu */
+.offer-details{
   width: 70%;
-  height: 90%;
-  background: rgba(54,91,109,0.88);
-  padding: 40px 10px;
-  color: white;
+
+}
+
+.offer-properties{
+  height: 20%;
+  width: 100%;
+}
+
+.description-title{
+  width: 100%;
+  display: block;
+  font-size: 2.4em;
+}
+
+.description-text{
+  padding: 10px 5%;
+  font-size: 1.3em;
+}
+
+.contact-button{
+  padding: 10px;
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-color: rgba(78, 176, 197, 0.83);
+  width: 80%;
+  font-size: 1.6em;
+  color: black;
+  font-weight: bold;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button-icon{
+  height: 70%;
+}
+
+.contact-button:hover{
+  background-color: rgba(52, 123, 139, 0.83);
+}
+
+.offer-property-icon{
+  width: 25%;
 }

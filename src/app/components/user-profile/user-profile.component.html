@@ -1,0 +1,44 @@
+<div class="user-profile">
+  <div class="header">
+    <div class="menu">
+      <div class="logo" (click)="scrollToTop()">
+        <img src="https://i.ibb.co/2nLqX0c/logo-easy.png" alt="EasyRent Logo">
+      </div>
+      <div class="menu-items">
+        <div class="menu-item" (click)="scrollToSection('info')">Szukaj mieszkań</div>
+        <div class="menu-item" (click)="scrollToSection('tutorial')">Informacje</div>
+        <div class="menu-item" (click)="redirectToLogin()">Logowanie</div>
+      </div>
+      <div class="user-icon"></div>
+    </div>
+  </div>
+  
+  <div class="container">
+    
+    <div class="content flex-column-centered">
+      <div class="user-profile-data flex-row-centered">
+        <div class="profile-photo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Boston_Tea_Party_Currier_colored.jpg/800px-Boston_Tea_Party_Currier_colored.jpg" alt="Your Image">
+          <div class="overlay-text">Zmień zdjęcie profilowe</div>
+        </div>
+        <form class="user-profile-data-form flex-column-centered">
+          <label for="imie">Imię</label>
+          <input type="text" id="imie" name="first_name" class="user-profile-input">
+
+          <label for="nazwisko">Nazwisko</label>
+          <input type="text" id="nazwisko" name="last_name" class="user-profile-input">
+
+          <label for="nr_telefonu">Nr Telefonu</label>
+          <input type="tel" id="nr_telefonu" name="phone_number" class="user-profile-input">
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="user-profile-input" >
+          <button class="contact-button" type="submit">Zmień dane</button>
+          <button class="contact-button flex-row-centered">
+            <img src="assets/icons/edit-icon.svg" class="contact-button-icon" alt="email">
+            Zmień hasło</button>
+        </form>
+    </div>  
+  </div>
+</div>
+  

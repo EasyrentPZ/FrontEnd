@@ -11,6 +11,8 @@ import { OwnerReportsComponent } from './owner-reports/owner-reports.component';
 import { OwnerAccountComponent } from './owner-account/owner-account.component';
 import { OwnerApartmentManagementComponent } from './owner-apartment-management/owner-apartment-management.component';
 import { FormsModule } from '@angular/forms'; 
+import { MenuModule } from '../menu/menu.module';
+
 
 @NgModule({
   declarations: [
@@ -20,12 +22,13 @@ import { FormsModule } from '@angular/forms';
     OwnerHelloComponent,
     OwnerReportsComponent,
     OwnerAccountComponent,
-    OwnerApartmentManagementComponent
+    OwnerApartmentManagementComponent,
   ],
   imports: [
     CommonModule,
     OwnerRoutingModule,
-    FormsModule
+    FormsModule,
+    MenuModule
   ]
 })
 export class OwnerModule { }

@@ -1,0 +1,46 @@
+<!-- market-search.component.html -->
+
+<div class="market-search">
+  <app-menu [menuType]="'unregistered'"></app-menu>
+  
+    <div class="container">
+        <div class="content">
+            <div class="filters div-with-right-border">
+              <h1>Sortuj</h1>
+              <select name="sort" id="sort" class="filter-input">
+                <option value="price-ASC">Cena rosnąco</option>
+                <option value="price-DESC">Cena malejąco</option>
+              </select>
+              <h1>Filtruj</h1>
+              <form method="GET" class="filters-form">
+                <div class="filter-section">
+                  <span class="filter-header div-with-bottom-border">Miasto</span>
+                  <input name="city" id="city" class="filter-input" />
+                </div>
+                <div class="filter-section">
+                  <span class="filter-header div-with-bottom-border">Cena</span>
+                  <span class="filter-text">Od</span>
+                  <input name="price-from" id="price-from" class="filter-input" />
+                  <span class="filter-text">Do</span>
+                  <input name="price-to" id="price-to" class="filter-input" />
+                </div>
+              </form>
+            </div>
+            <div  class="results-area">
+              <div *ngFor="let property of properties" class="result div-with-bottom-border">
+                  <img class="result-photo" src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg" alt="Photo">
+                <div class="flex-item result-details">
+                  <h2>{{property.name}}</h2>
+                  <span>Koszt najmu: {{property.rent}} PLN/msc</span>
+                  <span>Media: {{property.utilityCosts}} PLN/msc</span>
+                  <span>Kaucja: {{property.deposit}} PLN</span>
+                </div>
+                <div class="flex-item result-summary">
+                  <h3>Łącznie: {{property.getFullCost()}} PLN</h3>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
