@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'market-offer', component: MarketOfferComponent },
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'owner', loadChildren: () => import('./components/owner/owner.module').then(m => m.OwnerModule), canActivate: [AuthGuard], data: { userType: 'owner' }  },
-  { path: 'tenant', loadChildren: () => import('./components/renter/renter.module').then(m => m.RenterModule), canActivate: [AuthGuard], data: { userType: 'tenant' }  },
+  { path: 'renter', loadChildren: () => import('./components/renter/renter.module').then(m => m.RenterModule), canActivate: [AuthGuard], data: { userType: 'tenant' }  },
   // { path: 'owner', loadChildren: () => import('./components/owner/owner.module').then(m => m.OwnerModule)},
   // { path: 'tenant', loadChildren: () => import('./components/renter/renter.module').then(m => m.RenterModule)},
   { path: '', redirectTo: 'home', pathMatch: 'full' }

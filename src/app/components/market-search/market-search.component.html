@@ -23,10 +23,15 @@
                   <input name="price-from" id="price-from" class="filter-input" />
                   <span class="filter-text">Do</span>
                   <input name="price-to" id="price-to" class="filter-input" />
+                  <span class="filter-header div-with-bottom-border">Powierzchnia</span>
+                  <span class="filter-text">Od</span>
+                  <input name="area-from" id="area-from" class="filter-input" />
+                  <span class="filter-text">Do</span>
+                  <input name="area-to" id="area-to" class="filter-input" />
                 </div>
               </form>
             </div>
-            <div  class="results-area">
+            <div  class="results-area custom-scrollbar">
               <div *ngFor="let property of properties" class="result div-with-bottom-border">
                   <img class="result-photo" src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg" alt="Photo">
                 <div class="flex-item result-details">

@@ -15,13 +15,13 @@ const routes: Routes = [
         path: '',
         component: RenterComponent,
         children: [
-            { path: 'tenant-announcements', component: RenterAnnouncementsComponent },
-            { path: 'tenant-apartment', component: RenterApartmentComponent },
-            { path: 'tenant-reports', component: RenterReportsComponent },
-            { path: 'tenant-account', component: RenterAccountComponent },
-            { path: 'tenant-hello', component: RenterHelloComponent },
-            { path: 'tenant-apartment-management/:id', component: RenterApartmentManagementComponent },
-            { path: '', redirectTo: 'tenant-hello', pathMatch: 'full' }
+            { path: 'renter-announcements', component: RenterAnnouncementsComponent },
+            { path: 'renter-apartment', component: RenterApartmentComponent },
+            { path: 'renter-reports', component: RenterReportsComponent },
+            { path: 'renter-account', component: RenterAccountComponent },
+            { path: 'renter-hello', component: RenterHelloComponent },
+            { path: 'renter-apartment-management/:id', component: RenterApartmentManagementComponent },
+            { path: '', redirectTo: 'renter-hello', pathMatch: 'full' }
         ]
     }
 ];

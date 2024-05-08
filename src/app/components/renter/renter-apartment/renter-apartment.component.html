@@ -1,17 +1,63 @@
-<div class="apartment" *ngIf="apartment" (click)="redirectToApartmentDetails(apartment.id)">
-  <h1>Mieszkanie</h1>
-  <div class="details">
-    <img [src]="apartment.imageUrl ? apartment.imageUrl : 'https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg'" 
-         alt="Zdjęcie mieszkania" 
-         class="apartment-image">    
-    <div class="info">
-      <div class="detail-item">
-        <strong>Adres:</strong> {{apartment.address}}
+<div class="container">
+  <div class="content flex-column-centered">
+
+    <div class="apartment-header">
+      <img class="apartment-header-image" src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg" alt="Photo"/>
+      <div class="apartment-header-details">
+        <div class="header-details-title">{{property.name}}</div>
+        <div class="header-details-element">Umowa najmu do: xx.xx.xx</div>
       </div>
-      <div class="detail-item">
-        <strong>Notatka:</strong> {{apartment.note}}
-      </div>
-      <!-- Add other details here -->
     </div>
+
+    <div class="apartment-body">
+      <div class="owner-area flex-column-centered div-with-right-border">
+        <div class="contact-button flex-row-centered">
+          <img src="assets/icons/Report-black.svg" class="contact-button-icon" alt="email">
+          Zgłoś problem
+        </div>
+        <div class="owner-photo">
+          <img src={{owner.image}} alt="Your Image">
+        </div>
+        <span class="owner-name">{{owner.name}}</span>
+        <div class="contact-button flex-row-centered">
+          <img src="assets/icons/phone-icon.svg" class="contact-button-icon" alt="phone">
+          Zadzwoń
+        </div>
+        <div class="contact-button flex-row-centered">
+          <img src="assets/icons/email-icon.svg" class="contact-button-icon" alt="email">
+          Napisz
+        </div>
+      </div>
+
+      <div class="announcement-report-area">
+        <div id="announcements">
+          <div class="section-header div-with-bottom-border">Ogłoszenia</div>
+          <div class="announcements-details custom-scrollbar">
+            <div *ngFor="let announcement of announcements" class="single-announcement div-with-bottom-border">
+              <div class="single-announcement-details">
+                <div class="single-announcement-header">{{announcement.title}}</div>
+                <div class="single-announcement-description">{{announcement.description}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div id="reports">
+          <div class="section-header div-with-bottom-border">Zgłoszenia</div>
+          <div class="announcements-details custom-scrollbar">
+            <div *ngFor="let report of reports" class="single-announcement div-with-bottom-border">
+              <div class="single-announcement-details">
+                <div class="single-announcement-header">Zgłoszenie nr {{report.id}}</div>
+                <div class="report-status">
+                  Status: <span class="report-status-div">w trakcie naprawy</span>
+                </div>
+                <div class="single-announcement-description">{{report.description}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

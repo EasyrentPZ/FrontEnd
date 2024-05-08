@@ -7,3 +7,69 @@ body {
   margin: 0;
   font-family: "Nunito Sans", sans-serif;
 }
+.flex-row-centered{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column-centered{
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+}
+
+/*divs with right border: 10% smaller than div, centered*/
+
+.div-with-right-border {
+  position: relative; /* Needed for absolute positioning */
+}
+
+.div-with-right-border::after {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position relative to the div */
+  top: 5%;
+  right: 0;
+  width: 2px; /* Width of the border */
+  height: 90%; /* Height of the border, adjust as needed */
+  background-color: #000; /* Color of the border */
+}
+
+/*divs with bottop border: 10% smaller than div, centered*/
+
+.div-with-bottom-border {
+position: relative; /* Needed for absolute positioning */
+}
+
+.div-with-bottom-border::after {
+content: ""; /* Required for pseudo-element */
+position: absolute; /* Position relative to the div */
+bottom: 0; /* Position at the bottom */
+left: 5%;
+width: 90%; /* Width of the border */
+height: 2px; /* Height of the border, adjust as needed */
+background-color: #000; /* Color of the border */
+}
+
+/*custom scrollbars for sections*/
+
+.custom-scrollbar::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: rgba(200,200,200, 0.15);
+}
+
+.custom-scrollbar::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: rgba(200,200,200, 0.15);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #3b3b3b;
+}

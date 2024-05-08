@@ -10,6 +10,7 @@ import { RenterReportsComponent } from './renter-reports/renter-reports.componen
 import { RenterAccountComponent } from './renter-account/renter-account.component';
 import { RenterHelloComponent } from './renter-hello/renter-hello.component';
 import { RenterApartmentManagementComponent } from './renter-apartment-management/renter-apartment-management.component';
+import { MenuModule } from '../menu/menu.module';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { RenterApartmentManagementComponent } from './renter-apartment-managemen
     ],
     imports: [
         CommonModule,
-        RenterRoutingModule
+        RenterRoutingModule,
+        MenuModule
     ]
 })
 export class RenterModule { }
