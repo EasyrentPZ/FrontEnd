@@ -36,7 +36,7 @@
   justify-content: center;
   min-height: 100vh;
   padding-top: 10vh; /* Wysokość menu */
-  padding-bottom: 10vh;
+  padding-bottom: 5vh;
   height: 100vh;
 }
 
@@ -98,12 +98,12 @@
 .owner-area{
   width: 30%;
   justify-content: center;
-  gap: 30px;
+  gap: 1vh;
 }
 
 .owner-photo{
-  width: 150px; /* Set width and height for the circular container */
-  height: 150px;
+  width: 15vh; /* Set width and height for the circular container */
+  height: 15vh;
   border-radius: 50%; /* Make the container circular */
   overflow: hidden;
 }
@@ -118,27 +118,7 @@
   font-size: 2em;
 }
 
-.contact-button{
-  padding: 10px;
-  border-radius: 18px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  background-color: rgba(78, 176, 197, 0.83);
-  width: 80%;
-  font-size: 1.6em;
-  color: black;
-  font-weight: bold;
-  gap: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
-.contact-button-icon{
-  height: 70%;
-}
-
-.contact-button:hover{
-  background-color: rgba(52, 123, 139, 0.83);
-}
 
 .report-header{
   display: flex;
@@ -200,7 +180,7 @@
   padding: 5px 5%;
   text-align: left;
   display: flex;
-  height:40%;
+  height: auto;
 }
 
 .single-announcement-header{

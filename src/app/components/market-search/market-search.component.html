@@ -6,6 +6,7 @@
     <div class="container">
         <div class="content">
             <div class="filters div-with-right-border">
+              <div class="filters-body custom-scrollbar">
               <h1>Sortuj</h1>
               <select name="sort" id="sort" class="filter-input">
                 <option value="price-ASC">Cena rosnąco</option>
@@ -31,6 +32,7 @@
                 </div>
               </form>
             </div>
+          </div>
             <div  class="results-area custom-scrollbar">
               <div *ngFor="let property of properties" class="result div-with-bottom-border">
                   <img class="result-photo" src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg" alt="Photo">
@@ -45,7 +47,7 @@
                 </div>
               </div>
             </div>
+          </div>
         </div>
     </div>
-  </div>
   

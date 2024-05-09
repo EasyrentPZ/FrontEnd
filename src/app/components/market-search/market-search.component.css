@@ -69,7 +69,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    padding-top: 8vh; /* Wysokość menu */
+    padding-top: 90px; /* Wysokość menu */
   }
   
   .content {
@@ -81,12 +81,13 @@
     background: rgba(54,91,109,0.88);
   }
   
-.div-with-right-border {
+  .div-with-right-border {
     position: relative; /* Needed for absolute positioning */
+    overflow-x: auto; /* Force horizontal scrollbar */
+    overflow-y: hidden; /* Hide vertical scrollbar */
 }
 
 .div-with-right-border::after {
-    content: ""; /* Required for pseudo-element */
     position: absolute; /* Position relative to the div */
     top: 5%;
     right: 0;
@@ -95,17 +96,30 @@
     background-color: #000; /* Color of the border */
 }
 
+
 .filters{
-    height: 100%;
-    width: 25%;
-    color: white;
-    padding:40px 10px;
-    display: flex;
+  height: 100%;
+  width: 25%;
+  color: white;
+  display: flex;
+  padding: 5% 5px;
   flex-direction: column; /* Arrange items vertically */
   align-items: center; /* Center items horizontally */
   text-align: center; /* Center text within each element */
+  overflow: auto;
 
 }
+
+.filters-body{
+  height: 100%;
+  width: 100%;
+  
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text within each element */
+  overflow: auto;
+}
+
 .results-area{
   display: flex;
   flex-direction: column;
@@ -123,7 +137,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 20%;
   padding: 10px;
 }
 
@@ -133,7 +146,7 @@
 }
 
 .result-photo{
-  height: 90%;
+  height: 20vh;
   border-radius: 20px;
 }
 

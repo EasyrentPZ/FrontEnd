@@ -73,3 +73,26 @@ background-color: #000; /* Color of the border */
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #3b3b3b;
 }
+
+.contact-button{
+  padding: 10px;
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-color: rgba(78, 176, 197, 0.83);
+  width: 80%;
+  font-size: calc(4px + 1.2vw);
+  color: black;
+  font-weight: bold;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button-icon{
+  height: 70%;
+}
+
+.contact-button:hover{
+  background-color: rgba(52, 123, 139, 0.83);
+}
+
