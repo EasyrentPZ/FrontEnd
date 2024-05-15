@@ -50,7 +50,7 @@ export class RegisterComponent {
   
   submitDetails() {
     if (this.registerForm.valid) {
-      const { confirmPassword, ...postData } = this.registerForm.value as any; // Remove confirmPassword from postData
+      const postData = this.registerForm.value as any;
 
       this.authService.registerUser(postData as RegistrationForm).subscribe({
         next: (response) => {
@@ -64,7 +64,9 @@ export class RegisterComponent {
     } else {
       this.messageService.add({ severity: 'error', summary: 'Invalid Form', detail: 'Please fill out the form correctly before submitting.' });
     }
-  }
+}
+
+  
 
   scrollToSection(sectionId: string) {
     const element = document.getElementById(sectionId);
