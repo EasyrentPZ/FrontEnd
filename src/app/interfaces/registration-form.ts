@@ -1,9 +1,7 @@
 export interface RegistrationForm {
-    name: string;
-    surname: string;
-    email: string;
+    username: string;
     password: string;
-    role: string;
-    contact_email: string;
-    phone_number: string;
+    confirmPassword: string; // Ensuring type safety by using string instead of any
+    name: string;
+    lastname: string;
 }

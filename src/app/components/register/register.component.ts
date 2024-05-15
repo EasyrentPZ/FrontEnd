@@ -12,68 +12,59 @@ import { passwordMatchValidator } from 'src/app/shared/password-match.directive'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-
   registerForm = this.fb.group({
     name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
-    surname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
-    email: ['', [Validators.required, Validators.email]],
-    contact_email: ['', [Validators.required, Validators.email]],
-    phone_number: [''],
-    role: [''],
+    lastname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
+    username: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
     confirmPassword: ['', Validators.required]
   }, {
-    validators: passwordMatchValidator
-  })
+    validators: passwordMatchValidator // This ensures the passwords match
+  });
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private messageService: MessageService,
     private router: Router
-  ) { }
+  ) {}
+
 
   get name() {
     return this.registerForm.controls['name'];
   }
-  get surname() {
-    return this.registerForm.controls['surname'];
+  get lastname() {
+    return this.registerForm.controls['lastname'];
   }
-  get email() {
-    return this.registerForm.controls['email'];
+  get username() {
+    return this.registerForm.controls['username'];
   }
-  get contact_email(){
-    return this.registerForm.controls['contact_email'];
-  }
-  get phone_number(){
-    return this.registerForm.controls['phone_number'];
-  }
+
   get password() {
     return this.registerForm.controls['password'];
-  }
-  get role() {
-    return this.registerForm.controls['role'];
   }
   get confirmPassword() {
     return this.registerForm.controls['confirmPassword'];
   }
-
+  
+  
   submitDetails() {
-    const postData = { ...this.registerForm.value };
-    delete postData.confirmPassword;
-    postData.role = "OWNER";
-    this.authService.registerUser(postData as RegistrationForm).subscribe(
-      response => {
-        console.log(response);
-        this.messageService.add({ severity: 'success', summary: 'SUPER', detail: 'Zarejestrowano pomyslnie' });
-        this.router.navigate(['login'])
-      },
-      error => {
-        this.messageService.add({ severity: 'error', summary: 'Glupku', detail: 'Co ty wpisales, wpisz poprawne dane.' });
-      }
-    )
+    if (this.registerForm.valid) {
+      const { confirmPassword, ...postData } = this.registerForm.value as any; // Remove confirmPassword from postData
+
+      this.authService.registerUser(postData as RegistrationForm).subscribe({
+        next: (response) => {
+          this.messageService.add({ severity: 'success', summary: 'Registration Success', detail: 'You have been successfully registered.' });
+          this.router.navigate(['/login']);
+        },
+        error: (error) => {
+          this.messageService.add({ severity: 'error', summary: 'Registration Error', detail: 'Failed to register. Please check your details and try again.' });
+        }
+      });
+    } else {
+      this.messageService.add({ severity: 'error', summary: 'Invalid Form', detail: 'Please fill out the form correctly before submitting.' });
+    }
   }
- 
 
   scrollToSection(sectionId: string) {
     const element = document.getElementById(sectionId);
@@ -97,5 +88,4 @@ export class RegisterComponent {
       this.scrollToSection(sectionId);
     }, 100);
   }
-
 }

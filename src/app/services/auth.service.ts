@@ -1,24 +1,32 @@
-// auth.service.ts
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { User } from '../interfaces/auth-token';
 import { RegistrationForm } from 'src/app/interfaces/registration-form';
 import { LoginForm } from '../interfaces/login-form';
-import { MessageService } from 'primeng/api';
 
 @Injectable({
-  providedIn: 'root'
-})
+  providedIn: 'root'})
 export class AuthService {
   private loggedInUser: User | null = null;
-  private baseUrl = 'https://knowyourteacher.online:81';
+  private baseUrl = 'https://localhost:8090';
+
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) { }
-  
+
+  loginUser(loginForm: LoginForm): Observable<any> {
+    const loginEndpoint = `${this.baseUrl}/api/v1/auth/signin`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(loginEndpoint, loginForm, { headers, withCredentials: true }).pipe(
+      tap((response: any) => {
+        this.initializeUserFromCookie(); // Assuming cookie handling setup
+      })
+    );
+  }
+
   isLoggedIn(): boolean {
     return !!this.loggedInUser;
   }
@@ -27,48 +35,13 @@ export class AuthService {
     return this.loggedInUser;
   }
 
-  registerUser(userDetails: RegistrationForm): Observable<any> {
-    const url = `${this.baseUrl}/easyrent-api/v1/register_owner`;
-    return this.http.post(url, userDetails);
-  }
-
-  registerTenant(userDetails: RegistrationForm): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-    const url = `${this.baseUrl}/easyrent-api/v1/register_tenant`;
-    return this.http.post(url, userDetails, { headers }).pipe(
-      tap((response: any) => {
-        if (response && response.id) {
-          localStorage.setItem('residentUserId', response.id);
-        }
-      })
-    );
-  }
-  
-  loginUser(loginForm: LoginForm) {
-    const loginEndpoint = `${this.baseUrl}/easyrent-api/v1/login`;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(loginEndpoint, loginForm, { headers }).pipe(
-      tap((response: any) => {
-        if (response && response.token) {
-          // Jeśli otrzymamy token, zapisz go w localStorage i zainicjuj użytkownika
-          localStorage.setItem('token', response.token);
-          this.initializeUser();
-        }
-      })
-    );
-  }
-
   logout(): void {
-    localStorage.removeItem('token');
-    this.loggedInUser = null;
+    localStorage.removeItem('token'); // Assuming token is stored in localStorage
+    this.loggedInUser = null; // Reset the user state
   }
 
-  private initializeUser(): void {
-    const token = localStorage.getItem('token');
+  private initializeUserFromCookie(): void {
+    const token = this.getCookie('jwt');
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       const decodedToken = this.jwtHelper.decodeToken(token);
       if (decodedToken) {
@@ -78,5 +51,33 @@ export class AuthService {
         };
       }
     }
+  }
+
+  getCookie(name: string): string | null {
+    let cookieValue = null;
+    if (document.cookie) {
+      const cookies = document.cookie.split(';');
+      for (let cookie of cookies) {
+        const [cookieName, cookieVal] = cookie.split('=');
+        if (cookieName.trim() === name) {
+          cookieValue = cookieVal;
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+
+  registerUser(registrationData: RegistrationForm): Observable<any> {
+    const registerUrl = `${this.baseUrl}/api/v1/auth/signup`;
+    return this.http.post(registerUrl, registrationData, { headers: this.headers, withCredentials: true })
+      .pipe(
+        tap(response => {
+          console.log('Registration successful', response);
+        }, error => {
+          console.error('Registration failed', error);
+        })
+      );
   }
 }
