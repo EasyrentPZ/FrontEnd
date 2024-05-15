@@ -32,34 +32,18 @@
       </div>
 <!-- surname -->
       <div class="form-group">
-        <input type="text" id="surname" formControlName="surname" name="surname" placeholder="Surname" required/>
-        <small *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="block p-error">
-          <div *ngIf="surname.errors?.['required']">Surname is required.</div>
-          <div *ngIf="surname.errors?.['pattern']">Enter a valid surname</div>
+        <input type="text" id="lastname" formControlName="lastname" name="lastname" placeholder="Surname" required/>
+        <small *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="block p-error">
+          <div *ngIf="lastname.errors?.['required']">Surname is required.</div>
+          <div *ngIf="lastname.errors?.['pattern']">Enter a valid surname</div>
         </small>
       </div>
 <!-- email -->
       <div class="form-group">
-        <input type="email" id="email" formControlName="email" name="email" placeholder="Email" required>
-        <small *ngIf="email.invalid && (email.dirty || email.touched)"class="block p-error">
-            <div *ngIf="email.errors?.['required']">Email jest wymagany.</div>
-            <div *ngIf="email.errors?.['email']">Wprowadź prawidłowy email.</div>
-        </small>
-      </div>
-<!-- contact_email -->
-      <div class="form-group">
-        <input type="text" id="contact_email" formControlName="contact_email" name="contact_email" placeholder="Contact Email" required>
-        <small *ngIf="contact_email.invalid && (contact_email.dirty || contact_email.touched)" class="block p-error">
-            <div *ngIf="email.errors?.['required']">Email is required.</div>
-            <div *ngIf="email.errors?.['contact_email']">Email should be valid</div>
-        </small>
-      </div>
-<!-- phone -->
-      <div class="form-group">
-        <input type="text" id="phone_number" formControlName="phone_number" name="phone_number" placeholder="Phone" required>
-        <small *ngIf="phone_number.invalid && (phone_number.dirty || phone_number.touched)" class="block p-error">
-          <div *ngIf="email.errors?.['required']">Phone is required.</div>
-          <div *ngIf="email.errors?.['phone_number']">Phone should be valid</div>
+        <input type="username" id="username" formControlName="username" name="username" placeholder="Email" required>
+        <small *ngIf="username.invalid && (username.dirty || username.touched)"class="block p-error">
+            <div *ngIf="username.errors?.['required']">Email jest wymagany.</div>
+            <div *ngIf="username.errors?.['username']">Wprowadź prawidłowy email.</div>
         </small>
       </div>
 <!-- role -->

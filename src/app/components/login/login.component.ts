@@ -39,9 +39,9 @@ export class LoginComponent {
       this.authService.loginUser(loginPayload).subscribe(
         () => {
           if (this.authService.isLoggedIn()) {
-            // Przekieruj do odpowiedniego dashboardu na podstawie roli
-            const userType = this.authService.getLoggedInUser()?.role.toLowerCase();
-            this.router.navigate([`${userType}`]);
+            // Przekieruj do odpowiedniego dashboardu na podstawie roli                         ||||| To nie działa trzeba to naprawic
+            // const userType = this.authService.getLoggedInUser()?.role.toLowerCase();
+            // this.router.navigate([`${userType}`]);
             this.msgService.add({ severity: 'success', summary: 'Login success', detail: 'Witaj w EasyRent' });
           }
         },
