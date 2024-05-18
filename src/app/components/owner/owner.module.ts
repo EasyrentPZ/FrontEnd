@@ -8,6 +8,7 @@ import { OwnerAnnouncementsComponent } from './owner-announcements/owner-announc
 import { OwnerApartmentsComponent } from './owner-apartments/owner-apartments.component';
 import { OwnerHelloComponent } from './owner-hello/owner-hello.component';
 import { OwnerReportsComponent } from './owner-reports/owner-reports.component';
+import { OwnerBillsComponent } from './owner-bills/owner-bills.component';
 import { OwnerAccountComponent } from './owner-account/owner-account.component';
 import { OwnerApartmentManagementComponent } from './owner-apartment-management/owner-apartment-management.component';
 import { FormsModule } from '@angular/forms'; 
@@ -23,6 +24,7 @@ import { MenuModule } from '../menu/menu.module';
     OwnerReportsComponent,
     OwnerAccountComponent,
     OwnerApartmentManagementComponent,
+    OwnerBillsComponent
   ],
   imports: [
     CommonModule,

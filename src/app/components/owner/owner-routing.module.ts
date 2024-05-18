@@ -8,6 +8,7 @@ import { OwnerApartmentsComponent } from './owner-apartments/owner-apartments.co
 import { OwnerHelloComponent } from './owner-hello/owner-hello.component';
 import { OwnerReportsComponent } from './owner-reports/owner-reports.component';
 import { OwnerAccountComponent } from './owner-account/owner-account.component';
+import { OwnerBillsComponent } from './owner-bills/owner-bills.component';
 import { OwnerApartmentManagementComponent } from './owner-apartment-management/owner-apartment-management.component';
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'owner-hello', component: OwnerHelloComponent },
       { path: 'owner-reports', component: OwnerReportsComponent },
       { path: 'owner-account', component: OwnerAccountComponent },
+      { path: 'owner-bills/:id', component: OwnerBillsComponent },
       { path: 'owner-apartment-management/:id', component: OwnerApartmentManagementComponent },
       { path: '', redirectTo: 'owner-hello', pathMatch: 'full' }
     ]
