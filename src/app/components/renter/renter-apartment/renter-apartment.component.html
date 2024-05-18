@@ -11,7 +11,7 @@
 
     <div class="apartment-body">
       <div class="owner-area flex-column-centered div-with-right-border">
-        <div class="contact-button flex-row-centered">
+        <div class="contact-button flex-row-centered" (click)="togglePopup()">
           <img src="assets/icons/Report-black.svg" class="contact-button-icon" alt="email">
           Zgłoś problem
         </div>
@@ -19,11 +19,11 @@
           <img src={{owner.image}} alt="Your Image">
         </div>
         <span class="owner-name">{{owner.name}}</span>
-        <div class="contact-button flex-row-centered">
+        <div class="contact-button flex-row-centered" (click)="togglePhonePopup()">
           <img src="assets/icons/phone-icon.svg" class="contact-button-icon" alt="phone">
           Zadzwoń
         </div>
-        <div class="contact-button flex-row-centered">
+        <div class="contact-button flex-row-centered" (click)="toggleEmailPopup()">
           <img src="assets/icons/email-icon.svg" class="contact-button-icon" alt="email">
           Napisz
         </div>
@@ -59,5 +59,37 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<div id="report-popup" class="popup big-popup" [ngClass]="{'show': isPopupVisible}">
+  <div class="popup-content">
+    <span class="close-button" (click)="togglePopup()">&times;</span>
+    <div class="flex-column-centered">
+      <div class="form-title">Zgłoś usterkę</div>
+      <form class="popup-form flex-column-centered">
+        <label for="report-description-input">Opis usterki</label>
+        <textarea id="report-description-input" name="report-description-input" class="form-input"></textarea>
+        <button type="submit" class="bill-button">Zgłoś</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="phone-popup" class="popup" [ngClass]="{'show': isPhonePopupVisible}">
+  <div class="popup-content">
+    <span class="close-button" (click)="togglePhonePopup()">&times;</span>
+    <div class="flex-column-centered">
+      <div class="form-title">999 999 999</div>
+    </div>
+  </div>
+</div>
+
+<div id="email-popup" class="popup" [ngClass]="{'show': isEmailPopupVisible}">
+  <div class="popup-content">
+    <span class="close-button" (click)="toggleEmailPopup()">&times;</span>
+    <div class="flex-column-centered">
+      <div class="form-title">example@example.com</div>
+    </div>
   </div>
 </div>
