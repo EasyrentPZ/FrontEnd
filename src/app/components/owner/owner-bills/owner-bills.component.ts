@@ -8,7 +8,7 @@ import { Bill } from 'src/app/shared/Bill';
   styleUrls: ['./owner-bills.component.css']
 })
 export class OwnerBillsComponent {
-  property = new Property("Mieszkanie 60m2", "Spokojna", "9", "desc", 1000, 1000, 2000);
+  property = new Property(1, "Mieszkanie 60m2", "Spokojna", "9", "desc", 1000, 1000, 2000);
   bills = [
     new Bill(1, "Kwiecień 2024", "AXOYUNDS3124", 4000),
     new Bill(1, "Kwiecień 2024", "AXOYUNDS3124", 4000),

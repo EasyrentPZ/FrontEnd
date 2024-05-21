@@ -1,30 +1,25 @@
-<!-- owner-apartments.component.html -->
 <div class="container">
   <div class="content flex-column-centered">
     <div class="section-header div-with-bottom-border">Moje mieszkania</div>
     <div class="apartments custom-scrollbar">
       <div *ngFor="let property of properties" class="apartment-view div-with-bottom-border">
-        <img class="apartment-photo"
-          src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg"
-          alt="Photo">
+        <img class="apartment-photo" [src]="property.photos?.[0]?.photo || 'https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg'" alt="Photo">
         <div class="flex-item apartment-details">
           <h2>{{property.name}}</h2>
-          <span>ul. {{property.streetName}} {{property.buildingNo}}</span>
+          <span>ul. {{property.streetName}} {{property.address}}</span>
           <div class="apartment-action">
-            <img src="assets/icons/Edit-apartment.svg" alt="Edit apartment" (click)="editApartment(1)" />
-            <img src="assets/icons/Bill.svg" alt="View bills" (click)="viewBills(1)" />
-            <img src="assets/icons/Report-black.svg" alt="View reports" (click)="viewReports(1)" />
+            <img src="assets/icons/Edit-apartment.svg" alt="Edit apartment" (click)="editApartment(property.id)" />
+            <img src="assets/icons/Bill.svg" alt="View bills" (click)="viewBills(property.id)" />
+            <img src="assets/icons/Report-black.svg" alt="View reports" (click)="viewReports(property.id)" />
           </div>
-          
         </div>
         <div class="apartment-inhabitants">
           <img src="assets/icons/Inhabitants.svg" alt="Inhabitants" />
-          3
+          {{ property.livingRooms }}
         </div>
       </div>
-
       <div class="add-apartment">
-        <div class="add-apartment-button">
+        <div class="add-apartment-button" (click)="addApartment()">
           <img src="assets/icons/Add-apartment.svg" alt="add" />
           Dodaj mieszkanie
         </div>

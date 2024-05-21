@@ -10,6 +10,7 @@ import { Owner } from 'src/app/shared/Owner';
 })
 export class MarketOfferComponent {
     property = new Property(
+    1,
     "Mieszkanie 60m2",   // name
     "Spokojna",          // street
     "9",                 // buildingNo

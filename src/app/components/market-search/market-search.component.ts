@@ -21,6 +21,7 @@ export class MarketSearchComponent implements OnInit {
     this.apartmentService.getApartments(filters).subscribe(
       response => {
         this.properties = response.content.map(item => new Property(
+          item.id,
           item.name,
           item.streetName || '', // Assuming street is directly returned
           item.buildingNo || '',
@@ -28,6 +29,7 @@ export class MarketSearchComponent implements OnInit {
           Number(item.rentAmount),
           Number(item.utilityCost),
           Number(item.deposit),
+          item.livingRooms,
           item.photos, // directly passing the photos array
           item.address  // passing the complete address if available
         ));
