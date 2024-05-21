@@ -13,6 +13,10 @@ export class HomeComponent {
   redirectToLogin() {
     this.router.navigate(['/login']);
   }
+
+  redirectToMarket() {
+    this.router.navigate(['/market-search']);
+  }
   returnHome() {
     this.router.navigate(['/home']);
   }

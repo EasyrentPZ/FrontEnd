@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';  // Import AuthService
 
 @Component({
   selector: 'app-menu',
@@ -6,27 +8,35 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  @Input() menuType: 'tenant' | 'owner' | 'unregistered' = 'unregistered';
+  @Input() menuType: 'renter' | 'owner' | 'unregistered' = 'unregistered';
 
-  handleMenuItemClicked(link: string) {
-    // Handle menu item clicks internally
+  constructor(private router: Router, private authService: AuthService) {}  // Inject AuthService
+
+  handleMenuItemClicked(link: string): void {
     console.log('Menu item clicked:', link);
-    // You can perform navigation or other actions here based on the clicked link
+    if (link === '/logout') {
+      this.authService.logout();  // Call logout from AuthService
+      this.router.navigate(['/login']);  // Redirect to login page after logout
+    } else {
+      this.router.navigate([link]);  // Normal navigation for other links
+    }
   }
 
   get menuItems(): MenuItem[] {
     switch (this.menuType) {
-      case 'tenant':
+      case 'renter':
         return [
-          { label: 'Rachunki', link: '/tenant/tenant-bills' },
-          { label: 'Mieszkanie', link: '/tenant/tenant-property' },
-          { label: 'Wyloguj', link: '/logout' }
+          { label: 'Informacja dodatkowa', link: `/${this.menuType}/${this.menuType}-hello` },
+          { label: 'Moje mieszkania', link: `/${this.menuType}/${this.menuType}-apartments` },
+          { label: 'Profil', link: `/${this.menuType}/${this.menuType}-account` },
+          { label: 'Wyloguj', link: '/logout' }  // Keep as a placeholder for handling in click
         ];
       case 'owner':
         return [
-          { label: 'Rachunki', link: '/owner/owner-bills' },
-          { label: 'Moje mieszkania', link: '/owner/owner-properties' },
-          { label: 'Wyloguj', link: '/logout' }
+          { label: 'Informacja dodatkowa', link: `/${this.menuType}/${this.menuType}-hello` },
+          { label: 'Moje mieszkania', link: `/${this.menuType}/${this.menuType}-apartments` },
+          { label: 'Profil', link: `/${this.menuType}/${this.menuType}-account` },
+          { label: 'Wyloguj', link: '/logout' }  // Keep as a placeholder for handling in click
         ];
       case 'unregistered':
         return [

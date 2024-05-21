@@ -9,12 +9,13 @@
           alt="Photo">
         <div class="flex-item apartment-details">
           <h2>{{property.name}}</h2>
-          <span>ul. {{property.street}} {{property.buildingNo}}</span>
+          <span>ul. {{property.streetName}} {{property.buildingNo}}</span>
           <div class="apartment-action">
-            <img src="assets/icons/Edit-apartment.svg" alt="apartment" />
-            <img src="assets/icons/Bill.svg" alt="bills" />
-            <img src="assets/icons/Report-black.svg" alt="reports" />
+            <img src="assets/icons/Edit-apartment.svg" alt="Edit apartment" (click)="editApartment(1)" />
+            <img src="assets/icons/Bill.svg" alt="View bills" (click)="viewBills(1)" />
+            <img src="assets/icons/Report-black.svg" alt="View reports" (click)="viewReports(1)" />
           </div>
+          
         </div>
         <div class="apartment-inhabitants">
           <img src="assets/icons/Inhabitants.svg" alt="Inhabitants" />

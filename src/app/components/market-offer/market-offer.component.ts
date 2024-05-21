@@ -9,8 +9,15 @@ import { Owner } from 'src/app/shared/Owner';
   styleUrls: ['./market-offer.component.css']
 })
 export class MarketOfferComponent {
-  property = new Property("Mieszkanie 60m2", "Spokojna", "9", "desc", 1000, 1000, 2000);
-  owner = new Owner("Paweł", "Kowalski", "999222111", "pawelk@gmail.com", "https://static2.strzelce360.pl/data/wysiwig/wqtv1fum7knmhdb.jpg")
+    property = new Property(
+    "Mieszkanie 60m2",   // name
+    "Spokojna",          // street
+    "9",                 // buildingNo
+    "desc",              // description
+    1000,                // rentAmount
+    1000,                // utilityCosts
+    2000                 // deposit
+);  owner = new Owner("Paweł", "Kowalski", "999222111", "pawelk@gmail.com", "https://static2.strzelce360.pl/data/wysiwig/wqtv1fum7knmhdb.jpg")
   constructor(private router: Router) { }
   
   redirectToLogin() {
