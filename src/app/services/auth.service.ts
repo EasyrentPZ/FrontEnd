@@ -10,7 +10,7 @@ import { LoginForm } from '../interfaces/login-form';
   providedIn: 'root'})
 export class AuthService {
   private loggedInUser: User | null = null;
-  private baseUrl = 'https://localhost:8090';
+  //private baseUrl = 'https://localhost:8090';
 
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private jwtHelper = new JwtHelperService();
@@ -18,7 +18,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   loginUser(loginForm: LoginForm): Observable<any> {
-    const loginEndpoint = `${this.baseUrl}/api/v1/auth/signin`;
+    const loginEndpoint = `/api/v1/auth/signin`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(loginEndpoint, loginForm, { headers, withCredentials: true }).pipe(
       tap((response: any) => {
@@ -70,7 +70,7 @@ export class AuthService {
 
 
   registerUser(registrationData: RegistrationForm): Observable<any> {
-    const registerUrl = `${this.baseUrl}/api/v1/auth/signup`;
+    const registerUrl = `/api/v1/auth/signup`;
     return this.http.post(registerUrl, registrationData, { headers: this.headers, withCredentials: true })
       .pipe(
         tap(response => {

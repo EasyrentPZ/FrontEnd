@@ -22,6 +22,10 @@ export class OwnerReportsComponent {
     new Report(3, "Awaria ogrzewania", "opened"),
     new Report(3, "Awaria ogrzewania", "opened")
   ];
+  isPopupVisible = false;
+  togglePopup() {
+    this.isPopupVisible = !this.isPopupVisible;
+  }
 
   updateBackgroundColor(event: Event) {
     const target = event.target as HTMLSelectElement;

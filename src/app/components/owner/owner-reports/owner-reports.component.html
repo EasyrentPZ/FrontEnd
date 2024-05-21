@@ -28,6 +28,7 @@
               </div>
             </div>
           </div>
+          <div class="add-announcement" (click)="togglePopup()">Dodaj ogłoszenie</div>
         </div>
       </div>
 
@@ -55,3 +56,18 @@
 </div>
 </div>
   
+<div id="announcement" class="popup big-popup" [ngClass]="{'show': isPopupVisible}">
+  <div class="popup-content">
+    <span class="close-button" (click)="togglePopup()">&times;</span>
+    <div class="flex-column-centered">
+      <div class="form-title">Dodaj ogłoszenie</div>
+      <form class="popup-form flex-column-centered">
+        <label for="accouncement-title-input">Tytuł</label>
+        <input id="accouncement-title-input" name="report-description-input" class="form-input"/>
+        <label for="accouncement-description-input">Treść</label>
+        <textarea id="accouncement-description-input" name="report-description-input" class="form-input"></textarea>
+        <button type="submit" class="bill-button">Dodaj ogłoszenie</button>
+      </form>
+    </div>
+  </div>
+</div>

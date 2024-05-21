@@ -246,3 +246,68 @@ width: 70%;
   overflow: auto;
   height: 80%;
 }
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: white;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.popup.show {
+  display: block;
+}
+
+.popup-content {
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: red;
+}
+
+.form-title{
+  font-size: 2em;
+  font-weight: 500;
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.popup-form{
+  font-size: 1.5em;
+  flex-grow: 1;
+  gap: 10px;
+}
+
+textarea{
+  width: 90%;
+  height: 90%;
+}
+
+.bill-button{
+  height: 1.7em;
+  font-size: 1.1em;
+  padding: auto 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.big-popup{
+  height: 50vh;
+  width: 50vw;
+}

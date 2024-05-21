@@ -31,6 +31,23 @@ export class RenterApartmentComponent implements OnInit {
     new Report(3, "Awaria ogrzewania", "opened")
   ];
 
+  isPopupVisible = false;
+  isPhonePopupVisible = false;
+  isEmailPopupVisible = false;
+
+  togglePopup() {
+    this.isPopupVisible = !this.isPopupVisible;
+  }
+
+  togglePhonePopup() {
+    this.isPhonePopupVisible = !this.isPhonePopupVisible;
+  }
+
+  toggleEmailPopup() {
+    this.isEmailPopupVisible = !this.isEmailPopupVisible;
+  }
+
+
   updateBackgroundColor(event: Event) {
     const target = event.target as HTMLSelectElement;
     const selectedOption = target.options[target.selectedIndex];
