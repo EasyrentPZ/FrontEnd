@@ -1,10 +1,7 @@
-import { Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
-import { ApartmentService } from 'src/app/services/apartment.service';
-import { MessageService } from 'primeng/api';
-import { Property } from 'src/app/shared/Property';
-
-
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; // Ensure Router is imported
+import { ApartmentOwnerService } from 'src/app/services/apartment-owner.service';
+import { Property } from 'src/app/shared/Property'; // Ensure this path is correct
 
 @Component({
   selector: 'app-owner-apartments',
@@ -13,76 +10,42 @@ import { Property } from 'src/app/shared/Property';
 })
 export class OwnerApartmentsComponent implements OnInit {
 
+  properties: Property[] = [];
 
-  properties = [
-    new Property("Mieszkanie 60m2", "Spokojna", "9", "desc", 1000, 1000, 2000),
-    new Property("Mieszkanie 20m2", "Zielona", "1/11", "desc", 1400, 1200, 200),
-    new Property("Mieszkanie 20m2", "Zielona", "1/11", "desc", 1400, 1200, 200),
-    new Property("Mieszkanie 20m2", "Zielona", "1/11", "desc", 1400, 1200, 200),
-    new Property("Mieszkanie 20m2", "Zielona", "1/11", "desc", 1400, 1200, 200),
-    new Property("Mieszkanie 20m2", "Zielona", "1/11", "desc", 1400, 1200, 200),
-    new Property("Mieszkanie 100m2", "Spokojna", "9", "desc", 9000, 1000, 2000)
-  ];
-
-  apartments: any = {};
-  newApartment: any = { address: '', note: '' };
   constructor(
-    private router: Router, 
-    private apartmentService: ApartmentService,
-    private msgService: MessageService
-    ) { }
+    private apartmentOwnerService: ApartmentOwnerService,
+    private router: Router  // Inject Router here
+  ) {}
 
   ngOnInit(): void {
-    this.getApartments();
+    this.loadOwnerProperties();
   }
 
-  getApartments(): void {
-    this.apartmentService.getApartments().subscribe(
-      (response: any) => {
-        // Sprawdź czy dane istnieją i czy zawierają content
-        if (response) {
-          this.apartments = response;
-        }
+  loadOwnerProperties(): void {
+    this.apartmentOwnerService.getOwnerProperties().subscribe(
+      response => {
+        this.properties = response.content; // Adjust according to your API response structure
       },
-      (error) => {
-        // Obsługa błędów, na przykład wyświetlanie komunikatu dla użytkownika
-        this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Wystąpił błąd podczas pobierania mieszkań' });
-      }
-    );
-  }
-  
-
-  addApartment(): void {
-    this.apartmentService.addApartment(this.newApartment).subscribe(
-      (response: any) => {
-        this.msgService.add({ severity: 'success', summary: 'Sukces', detail: 'Mieszkanie dodano pomyślnie' });
-        this.getApartments();
-        // Wyczyść formularz po dodaniu nowego mieszkania
-        this.newApartment = { address: '', note: '' };
-      },
-      (error) => {
-        this.msgService.add({ severity: 'error', summary: 'Błąd', detail: 'Wystąpił błąd podczas dodawania mieszkania' });
+      error => {
+        console.error('Error fetching properties:', error);
       }
     );
   }
 
-  deleteApartment(event: Event, apartmentId: number): void {
-    event.stopPropagation(); // Zatrzymaj propagację zdarzenia
-    this.apartmentService.deleteApartment(apartmentId).subscribe(
-      (response: any) => {
-        this.msgService.add({ severity: 'success', summary: 'Sukces', detail: 'Mieszkanie usunięto pomyślnie' });
-        this.getApartments();
-      },
-      (error) => {
-        this.msgService.add({ severity: 'error', summary: 'Błąd', detail: 'Wystąpił błąd podczas usuwania mieszkania' });
-      }
-    );
+  // Navigation methods
+  editApartment(id: number) {
+    this.router.navigate([`/owner/owner-apartment-management/${id}`]);
   }
 
-  onApartmentClick(apartmentId: number): void {
-    this.router.navigate(['/owner/owner-apartment-management', apartmentId]);
+  viewBills(id: number) {
+    this.router.navigate([`/owner/owner-bills/${id}`]);
   }
 
+  viewReports(id: number) {
+    this.router.navigate([`/owner/owner-reports/${id}`]);
+  }
+
+  addApartment() {
+      throw new Error('Method not implemented.');
+    }
 }
-
-

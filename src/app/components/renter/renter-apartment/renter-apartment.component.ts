@@ -13,7 +13,7 @@ import { Report } from 'src/app/shared/Report';
   styleUrls: ['./renter-apartment.component.css']
 })
 export class RenterApartmentComponent implements OnInit {
-  property = new Property("Mieszkanie 60m2", "Spokojna", "9", "desc", 1000, 1000, 2000);
+  property = new Property(1, "Mieszkanie 60m2", "Spokojna", "9", "desc", 1000, 1000, 2000);
   owner = new Owner("Paweł", "Kowalski", "999222111", "pawelk@gmail.com", "https://static2.strzelce360.pl/data/wysiwig/wqtv1fum7knmhdb.jpg")
   apartment: any = null;
 

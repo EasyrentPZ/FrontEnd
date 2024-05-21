@@ -16,7 +16,7 @@ const routes: Routes = [
         component: RenterComponent,
         children: [
             { path: 'renter-announcements', component: RenterAnnouncementsComponent },
-            { path: 'renter-apartment', component: RenterApartmentComponent },
+            { path: 'renter-apartments', component: RenterApartmentComponent },
             { path: 'renter-reports', component: RenterReportsComponent },
             { path: 'renter-account', component: RenterAccountComponent },
             { path: 'renter-hello', component: RenterHelloComponent },

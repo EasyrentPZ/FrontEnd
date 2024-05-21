@@ -33,20 +33,26 @@
               </form>
             </div>
           </div>
-            <div  class="results-area custom-scrollbar">
-              <div *ngFor="let property of properties" class="result div-with-bottom-border">
-                  <img class="result-photo" src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg" alt="Photo">
-                <div class="flex-item result-details">
-                  <h2>{{property.name}}</h2>
-                  <span>Koszt najmu: {{property.rent}} PLN/msc</span>
-                  <span>Media: {{property.utilityCosts}} PLN/msc</span>
-                  <span>Kaucja: {{property.deposit}} PLN</span>
-                </div>
-                <div class="flex-item result-summary">
-                  <h3>Łącznie: {{property.getFullCost()}} PLN</h3>
-                </div>
+          <div class="results-area custom-scrollbar">
+            <div *ngFor="let property of properties" class="result div-with-bottom-border">
+              <img *ngIf="property.photos && property.photos.length > 0" 
+                   [src]="property.photos[0].photo" 
+                   alt="Property Photo"
+                   class="result-photo">
+              <div class="flex-item result-details">
+                <h2>Mieszkanie - {{ property.streetName }}</h2>
+                <span>Koszt najmu: {{ property.rentAmount }} PLN/msc</span>
+                <span>Media: {{ property.utilityCost }} PLN/msc</span>
+                <span>Kaucja: {{ property.deposit }} PLN</span>
+                <span>Adres: {{ property.address }}</span>
+              </div>
+              <div class="flex-item result-summary">
+                <h3>Łącznie: {{ property.getFullCost() }} PLN</h3>
               </div>
             </div>
+          </div>
+          
+          
           </div>
         </div>
     </div>

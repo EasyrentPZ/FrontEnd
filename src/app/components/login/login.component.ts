@@ -69,6 +69,9 @@ export class LoginComponent {
   returnHome() {
     this.router.navigate(['/home']);
   }
+  redirectToMarket() {
+    this.router.navigate(['/market-search']);
+  }
   redirectSection(sectionId: string) {
     this.router.navigate(['/home']);
 

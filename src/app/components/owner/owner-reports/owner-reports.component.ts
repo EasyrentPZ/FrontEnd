@@ -8,7 +8,7 @@ import { Property } from 'src/app/shared/Property';
   styleUrls: ['./owner-reports.component.css']
 })
 export class OwnerReportsComponent {
-  property = new Property("Mieszkanie 60m2", "Spokojna", "9", "desc", 1000, 1000, 2000);
+  property = new Property(1, "Mieszkanie 60m2", "Spokojna", "9", "desc", 1000, 1000, 2000);
   announcements = [
     new Announcement(2, "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor"),
     new Announcement(2, "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor"),

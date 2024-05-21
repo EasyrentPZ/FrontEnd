@@ -19,7 +19,7 @@ const routes: Routes = [
       { path: 'owner-announcements', component: OwnerAnnouncementsComponent },
       { path: 'owner-apartments', component: OwnerApartmentsComponent },
       { path: 'owner-hello', component: OwnerHelloComponent },
-      { path: 'owner-reports', component: OwnerReportsComponent },
+      { path: 'owner-reports/:id', component: OwnerReportsComponent },
       { path: 'owner-account', component: OwnerAccountComponent },
       { path: 'owner-bills/:id', component: OwnerBillsComponent },
       { path: 'owner-apartment-management/:id', component: OwnerApartmentManagementComponent },
