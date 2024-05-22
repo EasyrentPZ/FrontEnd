@@ -24,7 +24,7 @@ export class MarketSearchComponent implements OnInit {
           item.id,
           item.name,
           item.streetName || '', // Assuming street is directly returned
-          item.buildingNo || '',
+          item.area || '',
           item.description,
           Number(item.rentAmount),
           Number(item.utilityCost),

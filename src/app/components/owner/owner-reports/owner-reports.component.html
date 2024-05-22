@@ -1,15 +1,17 @@
 <div class="container">
 <div class="content flex-column-centered">
 <div class="fill-div">
-    <div class="report-header">
-      <div class="flex-row-centered report-header-image">
-        <img src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg" alt="Photo">
-      </div>
-      <div class="report-header-details">
-        <span class="header-details-title">{{property.name}}</span>
-        <span class="header-details-element">ul. {{property.streetName}} {{property.buildingNo}}</span>
-      </div>
+  <div *ngIf="property" class="report-header">
+    <div class="flex-row-centered report-header-image">
+      <!-- Use the safe navigation operator and default image fallback -->
+      <img [src]="property.photos?.[0]?.photo || 'https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg'" alt="Photo">
     </div>
+    <div class="report-header-details">
+      <!-- Safely access property details -->
+      <span class="header-details-title">Mieszkanie {{ property.area }} m<sup>2</sup></span>
+      <span class="header-details-element">ul. {{ property.streetName }} {{ property.address }}</span>
+    </div>
+  </div>
     <div class="sections-wrapper">
       <div id="announcements">
         <div class="section-header div-with-bottom-border">Ogłoszenia</div>

@@ -3,7 +3,7 @@ export class Property {
     public id: number,
     public name: string = '', 
     public streetName: string = '', 
-    public buildingNo: string = '', 
+    public area: string = '', 
     public description: string = '', 
     public rentAmount: number = 0, 
     public utilityCost: number = 0, 
