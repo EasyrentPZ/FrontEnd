@@ -1,281 +1,529 @@
-/* owner-apartment-management.component.css */
-
-/* Kontener zarządzania mieszkaniem */
-.apartment-management-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.report-status {
+  margin-top: 10px;
 }
-
-/* Sekcja wyświetlania szczegółów mieszkania */
-.apartment-display-details {
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.apartment-display-details p {
-  margin: 5px 0;
-}
-
-/* Sekcja aktualizacji szczegółów mieszkania */
-.apartment-details, .contract-item-big{
-  margin-bottom: 20px;
-  background-color: #ffe5c9;
-  padding: 50px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-
-}
-
-/* Etykieta */
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-/* Pola wejściowe */
-input,
-textarea {
-  width: calc(100% - 16px);
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-/* Przyciski */
-button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  
+.report-status label {
   margin-right: 10px;
-  transition: background-color 0.3s;
+}
+  
+.report-status select {
+  padding: 5px;
+  border: none;
+  border-radius: 30px;
+}
+  
+.report-status select[name="status"] {
+  color: #fff;
+  background-color: #5cb85c; 
+}
+  
+.report-status  select[name="status"] option[value="opened"] {
+  background-color: #5cb85c;
+}
+  
+.report-status  select[name="status"] option[value="solved"] {
+  background-color: #f0ad4e; 
+}
+  
+.report-status  select[name="status"] option[value="closed"] {
+  background-color: #d9534f; 
 }
 
-button:hover {
-  background-color: #45a049;
-}
-
-/* Kontener przycisków */
-.button-container {
-  text-align: right;
-}
-
-/* Nagłówek sekcji */
-h2 {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-}
-
-/* Responsywność */
-@media (max-width: 768px) {
-  .apartment-management-container {
-    max-width: 100%;
-    padding: 10px;
-  }
-}
-
-/* Sekcja umów najmu */
-.rent-contracts {
-  margin-bottom: 20px;
-}
-
-/* Lista umów najmu */
-.rent-contracts ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* Element listy umów najmu */
-.rent-contracts li {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-/* Stylizacja checkboxa */
-.add-tenant label.checkbox-label {
+  
+.content {
   display: flex;
-  align-items: left;
+  text-align: center;
+  /* Wysokość ekranu minus wysokość menu */
+  width: 70%;
+  height: 90%;
+  background: rgba(54,91,109,0.88);
+  padding: 40px 10px;
+  color: white;
+}
+  
+.div-with-right-border {
+    position: relative; /* Needed for absolute positioning */
 }
 
-.add-tenant input[type="checkbox"] {
-  margin-right: 8px;
+.div-with-right-border::after {
+    content: ""; /* Required for pseudo-element */
+    position: absolute; /* Position relative to the div */
+    top: 5%;
+    right: 0;
+    width: 2px; /* Width of the border */
+    height: 90%; /* Height of the border, adjust as needed */
+    background-color: #000; /* Color of the border */
 }
 
-/* Dodanie stylizacji dla opcji Tak/Nie */
-.add-tenant label.radio-label {
+
+.div-with-bottom-border {
+  position: relative; /* Needed for absolute positioning */
+}
+
+.div-with-bottom-border::after {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position relative to the div */
+  bottom: 0; /* Position at the bottom */
+  left: 5%;
+  width: 90%; /* Width of the border */
+  height: 2px; /* Height of the border, adjust as needed */
+  background-color: #000; /* Color of the border */
+}
+
+
+
+
+.offer-header{
+  display: flex;
+  height: 40%;
+  width: 100%;
+}
+
+.offer-header-details,
+.offer-header-image{
+  padding: 40px 0;
+  gap: 20px;
+}
+
+.offer-header-image{
+  width: 40%;
+  height: 100%;
+}
+
+.offer-header-details{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+
+}
+
+.offer-header-image img{
+  border-radius: 15px;
+  width: 100%;
+}
+
+.offer-header-details span {
+  margin: 5px;
+  display: block; /* Display each <h3> and <span> element as a block to ensure it appears on a new line */
+  align-self: flex-start;
+}
+
+.header-details-title{
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.header-details-element{
+  font-size: 1.4em;
+}
+
+.ng-star-inserted{
+  height: 100%;
+  width:100%;
+}
+
+.section-header{
+  font-size: 2em;
+  font-weight: bold;
+  padding: 0 5%;
+  text-align: left;
+}
+
+.single-announcement{
+  padding: 5px 5%;
+  text-align: left;
+  display: flex;
+}
+
+.single-announcement-header{
+  font-size: 1.4em;
+  font-weight: 500;
+  color: red;
+}
+
+.single-announcement-details{
+width: 70%;
+}
+.single-announcement-actions{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.single-announcement-actions-button{
+  font-size: 1.4em;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.delete-button{
+  color: red;
+}
+.fill-div{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.sections-wrapper{
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+#announcements, #reports{
+  height: 50%;
+  overflow: auto;
+}
+
+.container {
+  background: rgb(247,247,247);
+  background: linear-gradient(180deg, rgba(247,247,247,1) 0%, rgba(241,241,244,1) 7%, rgba(109,152,174,1) 52%, rgba(64,122,151,1) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 10vh; /* Wysokość menu */
+  padding-bottom: 10vh;
+}
+
+.flex-column-centered{
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  flex-direction: column;
+}
+  
+.content {
+  display: flex;
+  text-align: center;
+  margin-top: 70px;
+  /* Wysokość ekranu minus wysokość menu */
+  width: 70%;
+  height: 90%;
+  background: rgba(54,91,109,0.88);
+  padding: 30px 40px;
+  color: white;
 }
 
-.add-tenant input[type="radio"] {
-  margin-right: 8px;
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  color: black;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  padding: 0 10px 10px 10px;
+  background-color: white;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
 
-/* Kolorowa stylizacja dla opcji Tak/Nie */
-.add-tenant input[type="radio"] + span {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #4caf50; /* Kolor zielony */
-  border-radius: 50%;
-  margin-right: 5px;
+.popup.show {
+  display: block;
+}
+
+.popup-content {
   position: relative;
 }
 
-.add-tenant input[type="radio"]:checked + span::after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background-color: #4caf50; /* Kolor zielony */
-  border-radius: 50%;
+.close-button {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.add-tenant input[type="radio"] + span::before {
-  content: "";
-  width: 14px;
-  height: 14px;
-  border: 2px solid #4caf50; /* Kolor zielony */
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.5;
-}
-
-.add-tenant input[type="radio"]:checked + span::before {
-  opacity: 0;
-}
-
-
-/* Przyciski w sekcji umów najmu */
-.rent-contracts button {
-  background-color: #2196F3;
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.rent-contracts button:hover {
-  background-color: #0b7dda;
+.close-button:hover {
+  color: red;
 }
 
-/* Sekcja dodawania lokatora */
-.add-tenant {
-  margin-bottom: 20px;
-}
-
-/* Etykieta w sekcji dodawania lokatora */
-.add-tenant label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-/* Pole wyboru w sekcji dodawania lokatora */
-.add-tenant input[type="checkbox"] {
-  margin-bottom: 10px;
-}
-
-/* Dodatkowe style dla przycisków w sekcji dodawania lokatora */
-.add-tenant .button-container button {
-  background-color: #2196F3;
-}
-
-.add-tenant .button-container button:hover {
-  background-color: #0b7dda;
-}
-
-/* Sekcja informacji o lokatorze */
-.tenant-details {
-  margin-bottom: 20px;
-}
-
-/* Lista lokatorów */
-.tenant-details ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* Element listy lokatorów */
-.tenant-details li {
-  margin-bottom: 10px;
-}
-
-/* Dodatkowe style dla przycisków w sekcji informacji o lokatorze */
-.tenant-details .button-container button {
-  background-color: #ff9800;
-}
-
-.tenant-details .button-container button:hover {
-  background-color: #e68a00;
-}
-/* Dodatkowe style dla elementu select */
-/* Stylizacja dla etykiety select */
-.add-tenant label {
-  display: block;
-  margin-bottom: 8px; /* Lekki margines nad etykietą */
-  font-weight: bold;
-}
-
-/* Stylizacja dla elementu select */
-.add-tenant select {
+.form-title{
+  font-size: 2em;
+  font-weight: 500;
   width: 100%;
-  padding: 12px; /* Zwiększony padding */
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f5f5f5;
-  color: #333;
-  appearance: none; /* Resetowanie domyślnego wyglądu dla niektórych przeglądarek */
+  margin-top: 30px;
+  text-align: center;
+}
+
+.popup-form{
+  font-size: 1.5em;
+  flex-grow: 1;
+  gap: 10px;
+}
+
+textarea{
+  width: 90%;
+  height: 90%;
+}
+
+.bill-button{
+  height: 1.7em;
+  font-size: 1.1em;
+  padding: auto 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.big-popup{
+  height: 50vh;
+  width: 50vw;
+}
+
+.add-announcement{
+  width: 100%;
+  text-decoration: underline;
+  color: black;
+  font-size: 1.5em;
   cursor: pointer;
-  font-size: 16px; /* Zwiększony rozmiar tekstu */
 }
 
-.add-tenant select:hover {
-  border-color: #888;
+.offer-input{
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 1.3em;
+  text-align: center;
+}
+.input-medium{
+  width: 30%;
+}
+.input-small{
+  width: 15%;
 }
 
-.add-tenant select:focus {
-  outline: none;
-  border-color: #4caf50; /* Kolor zielony przy aktywnym elemencie */
+label{
+  font-size: 1.4em;
 }
 
-/* Stylizacja dla opcji w rozwijanej liście */
-.add-tenant select option {
-  padding: 12px; /* Zwiększony padding */
-  background-color: #fff;
-  color: #333;
-  font-size: 16px; /* Zwiększony rozmiar tekstu */
+.gaped-flex{
+  gap: 10px;
 }
 
-.add-tenant select option:hover {
+.photo-gallery {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.photo-container {
+  position: relative;
+  margin: 5px;
+}
+
+.photo-container img {
+  max-width: 200px;
+  max-height: 200px;
+  display: block;
+  transition: transform 0.2s;
+}
+
+.photo-container:hover img {
+  transform: scale(1.05);
+}
+
+.photo-container button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: none;
+}
+
+.photo-container:hover button {
+  display: block;
+}
+
+.add-photo {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.add-photo input {
+  display: none;
+}
+
+.add-photo button {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+
+.icon-details-section{
+  width: 100%;
+}
+
+.number-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #ddd;
+  border-radius: 25px;
+  padding: 10px;
+  width: fit-content;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.add-tenant select option:checked {
-  background-color: #4caf50; /* Kolor zielony dla zaznaczonej opcji */
-  color: #fff;
+.number-input .decrement,
+.number-input .increment {
+  background-color: #ddd;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.number-input .number-field {
+  width: 40px;
+  height: 40px;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+  margin: 0 10px;
+  background-color: white;
+  border-radius: 50%;
+  outline: none;
+}
+
+.input-with-icon{
+  width: 30%;
+  gap: 10px;
+}
+
+#animals-allowed{
+  height: 100%;
+}
+.section-header{
+  margin: 15px 0;
+  width: 100%;
+}
+
+
+textarea{
+  text-align: left !important;
+}
+
+/* Hide the default checkbox */
+.checkbox-container .checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkbox-container .checkbox-label {
+  position: relative;
+  display: inline-block;
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  background-color: #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Custom checkbox checked state */
+.checkbox-container .checkbox:checked + .checkbox-label {
+  background-color: #2196F3; /* Change color as needed */
+}
+
+/* Create the checkmark/indicator (hidden by default) */
+.checkbox-container .checkbox-label::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* Show the checkmark when checked */
+.checkbox-container .checkbox:checked + .checkbox-label::after {
+  display: block;
+}
+
+.tag-section{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 5%;
+}
+
+.tag{
+  padding: 2px 5px;
+  background-color: white;
+  font-size: 1em;
+  color: black;
+  border-radius: 10px;
+  margin: 0 5px;
+  width: auto;
+}
+
+.add-tag{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.tag-list{
+  background-color: white;
+}
+
+.av-tag{
+  background-color: white;
+  font-size: 1em;
+  color: black;
+  width: auto;
+  cursor: pointer;
+}
+.av-tag:hover{
+  background-color: rgb(60, 60, 60);
+  color: rgb(255, 255, 255);
+}
+
+.fill-div{
+  width: 100%;
+}
+
+.contact-button{
+  max-width: 200px;
+}
+
+.add-renter{
+  cursor: pointer;
+  text-decoration: underline;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  gap: 10px;
+}
+
+.renters-section{
+  width: 100%;
+  margin: 0 5%;
+}
+
+.renter{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 2em;
 }

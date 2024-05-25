@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MessageService } from 'primeng/api';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
+import { Property } from 'src/app/shared/Property';
+import { Renter } from 'src/app/shared/Renter';
 
 @Component({
   selector: 'app-owner-apartment-management',
@@ -21,6 +23,24 @@ export class OwnerApartmentManagementComponent implements OnInit {
   rentContracts: any = {};
   tenants: any = {};
   
+  property = new Property(1, 'Zielone', 'Wadowicka', '21/37', 'lorem ipsum', 4000, 1000, 1300, 4, [], undefined)
+  renters =[
+    new Renter(1, "Michał", "932323223")
+  ]
+
+  isPopupVisible = false;
+  isPhonePopupVisible = false;
+  phoneNumber="";
+  togglePopup() {
+    this.isPopupVisible = !this.isPopupVisible;
+  }
+
+  togglePhonePopup(number : string) {
+    this.phoneNumber = number;
+    this.isPhonePopupVisible = !this.isPhonePopupVisible;
+    console.log(this.isPhonePopupVisible)
+  }
+
   selectedContractId: number = -1;
   addingNewContract: boolean = false;
   updateApartmentDiv: boolean = false;
@@ -276,5 +296,67 @@ export class OwnerApartmentManagementComponent implements OnInit {
 
   reloadPage(): void {
     this.location.go(this.location.path());
+  }
+
+  photos: string[] = [];
+  selectedFile: File | null = null;
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+      this.addPhoto();
+    }
+  }
+
+  triggerFileInput(): void {
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    fileInput.click();
+  }
+
+  addPhoto(): void {
+    if (this.selectedFile) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.result) {
+          this.photos.push(reader.result as string);
+          this.selectedFile = null;
+        }
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
+  }
+
+  removePhoto(index: number): void {
+    this.photos.splice(index, 1);
+  }
+
+  value: number = 4;
+
+  decrement() {
+    if (!isNaN(this.value)) {
+      this.value--;
+    }
+  }
+
+  increment() {
+    if (!isNaN(this.value)) {
+      this.value++;
+    }
+  }
+
+  showTagList = false;
+  availableTags: string[] = ['Tag1', 'Tag2', 'Tag3', 'Tag4'];
+  selectedTags: string[] = [];
+
+  toggleTagList() {
+    this.showTagList = !this.showTagList;
+  }
+
+  addTag(tag: string) {
+    if (!this.selectedTags.includes(tag)) {
+      this.selectedTags.push(tag);
+    }
+    this.showTagList = false;  // Hide the tag list after selecting a tag
   }
 }
