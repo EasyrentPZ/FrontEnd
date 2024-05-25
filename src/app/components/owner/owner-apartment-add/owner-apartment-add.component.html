@@ -18,17 +18,17 @@
 
         </div>
         <div class="offer-header-details flex-column-centered">
-          <input class="offer-input input-medium" value={{property.name}} name="property-name" id="property-name" />
+          <!-- <input [(ngModel)]="property.name" class="offer-input input-medium" value={{property.name}} name="property-name" id="property-name" /> -->
           <div class="flex-row-centered gaped-flex">
             <label for="property-street">Adres: </label>
-            <input class="offer-input input-medium" value={{property.streetName}} name="property-street"
+            <input [(ngModel)]="property.streetName" class="offer-input input-medium" value={{property.streetName}} name="property-street"
               id="property-street" />
-            <input class="offer-input input-small" value={{property.buildingNo}} name="property-buildingNo"
+            <input [(ngModel)]="property.address" class="offer-input input-small" value={{property.address}} name="property-buildingNo"
               id="property-buildingNo" />
               
           </div>
             <label for="city-select">Miasto:</label>
-            <select id="city-select" class="offer-input input-medium" [(ngModel)]="selectedCity">
+            <select [(ngModel)]="property.city" id="city-select" class="offer-input input-medium" [(ngModel)]="selectedCity">
               <option *ngFor="let city of cityNames" [value]="city">{{ city }}</option>
             </select>
           
@@ -37,20 +37,20 @@
       <div class="icon-details-section flex-row-centered">
         <div class="input-with-icon flex-row-centered">
           <img class='input-with-icon-icon' src="assets/icons/properties/surface.svg" />
-          <input class="offer-input input-medium" value=" " name="property-area" id="property-area" />
+          <input [(ngModel)]="property.area" class="offer-input input-medium" value=" " name="property-area" id="property-area" />
         </div>
         <div class="input-with-icon flex-row-centered">
           <img class='input-with-icon-icon' src="assets/icons/properties/rooms.svg" />
           <div class="number-input">
             <button (click)="decrement()" class="decrement">-</button>
-            <input [(ngModel)]="value" class="number-field" />
+            <input [(ngModel)]="property.livingRooms" class="number-field" />
             <button (click)="increment()" class="increment">+</button>
           </div>
         </div>
         <div class="input-with-icon flex-row-centered">
           <img class='input-with-icon-icon' src="assets/icons/properties/animal.svg" />
           <div class="checkbox-container">
-            <input type="checkbox" id="checkbox" class="checkbox">
+            <input [(ngModel)]="property.pets" type="checkbox" id="checkbox" class="checkbox">
             <label for="checkbox" class="checkbox-label"></label>
           </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="section-header div-with-bottom-border">
           Opis
         </div>
-        <textarea class="offer-input">
+        <textarea [(ngModel)]="property.description" class="offer-input">
             {{property.description}}
           </textarea>
           <div class="section-header div-with-bottom-border">
@@ -67,13 +67,13 @@
           </div>
           <form id="costs-form" class="flex-column-centered">
             <label for="property-street">Wynajem: </label>
-            <input class="offer-input input-medium" value={{property.streetName}} name="property-rent"
+            <input [(ngModel)]="property.rentAmount" class="offer-input input-medium" value={{property.rentAmount}} name="property-rent"
               id="property-rent" />
               <label for="property-street">Media: </label>
-            <input class="offer-input input-medium" value={{property.streetName}} name="property-facilities"
-              id="property-facilities" />
+            <input [(ngModel)]="property.utilityCost" class="offer-input input-medium" value={{property.utilityCost}} name="property-utility"
+              id="property-utility" />
               <label for="property-street">Kaucja: </label>
-            <input class="offer-input input-medium" value={{property.streetName}} name="property-deposit"
+            <input [(ngModel)]="property.deposit" class="offer-input input-medium" value={{property.deposit}} name="property-deposit"
               id="property-deposit" />
           </form>
 
@@ -94,52 +94,11 @@
           </div>
         </div>
         <div class="flex-row-centered">
-          <div class="contact-button flex-row-centered">
+          <div class="contact-button flex-row-centered" (click)="saveProperty()">
             Zapisz
           </div>
         </div>
 
-        <div class="section-header div-with-bottom-border">
-          Mieszkańcy
-        </div>
-        <div class="renters-section">
-          <div *ngFor="let renter of renters" class="renter">
-            {{renter.name}}
-            <div class="contact-button flex-row-centered" (click)="togglePhonePopup(renter.phone)">
-              <img src="assets/icons/phone-icon.svg" class="contact-button-icon" alt="phone">
-              Zadzwoń
-            </div>
-          </div>
-          <div class="add-renter" (click)="togglePopup()">
-            <img src="assets/icons/Add-renter.svg" alt="add renter" /> Dodaj mieszkańca
-          </div>
-        </div>
 
-
-      </div>
-    </div>
-
-    <div id="announcement" class="popup big-popup" [ngClass]="{'show': isPopupVisible}">
-      <div class="popup-content">
-        <span class="close-button" (click)="togglePopup()">&times;</span>
-        <div class="flex-column-centered">
-          <div class="form-title">Dodaj mieszkańca</div>
-          <form class="popup-form flex-column-centered">
-            <label for="renter-email-input">Email</label>
-            <input id="renter-email-input" name="report-description-input" class="form-input" />
-            <label for="renter-password-input">Hasło</label>
-            <input id="renter-password-input" name="report-description-input" class="form-input" />
-            <button type="submit" class="bill-button">Dodaj</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <div id="announcement" class="popup" [ngClass]="{'show': isPhonePopupVisible}">
-      <div class="popup-content">
-        <span class="close-button" (click)="togglePhonePopup('')">&times;</span>
-        <div class="flex-column-centered">
-          <div class="form-title">{{phoneNumber}}</div>
-        </div>
       </div>
     </div>

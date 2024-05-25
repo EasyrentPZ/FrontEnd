@@ -22,6 +22,37 @@ export class OwnerApartmentManagementComponent implements OnInit {
   newRentContractDetails: any = {}; // Nowa umowa
   rentContracts: any = {};
   tenants: any = {};
+  cityNames: string[] = [];
+  selectedCity: string = '';
+
+  selectedContractId: number = -1;
+  addingNewContract: boolean = false;
+  updateApartmentDiv: boolean = false;
+  showRentContract: number = -1;
+  
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private apartmentService: ApartmentService,
+    private authService: AuthService,
+    private msgService: MessageService,
+    private location: Location
+  ) { }
+
+
+  availableTags: string[] = [];
+
+  ngOnInit(): void {
+    this.apartmentService.getFeatureNames().subscribe(
+      (data: string[]) => this.availableTags = data,
+      (error) => console.error(error)
+    );
+    this.apartmentService.getCityNames('Polska').subscribe(
+      cityNames => this.cityNames = cityNames,
+      error => console.error('Error fetching city names:', error)
+    );
+  }
   
   property = new Property(1, 'Zielone', 'Wadowicka', '21/37', 'lorem ipsum', 4000, 1000, 1300, 4, [], undefined)
   renters =[
@@ -41,28 +72,15 @@ export class OwnerApartmentManagementComponent implements OnInit {
     console.log(this.isPhonePopupVisible)
   }
 
-  selectedContractId: number = -1;
-  addingNewContract: boolean = false;
-  updateApartmentDiv: boolean = false;
-  showRentContract: number = -1;
   
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private apartmentService: ApartmentService,
-    private authService: AuthService,
-    private msgService: MessageService,
-    private location: Location
-  ) { }
-
-  async ngOnInit(): Promise<void> {
-    // await this.route.params.subscribe(async params => {
-    //   this.apartmentId = params['id'];
-    // });
-    // await this.getApartmentDetails();
-    // await this.getRentContracts();
-  }
+  // async ngOnInit(): Promise<void> {
+  //   // await this.route.params.subscribe(async params => {
+  //   //   this.apartmentId = params['id'];
+  //   // });
+  //   // await this.getApartmentDetails();
+  //   // await this.getRentContracts();
+  // }
 
   deleteApartment(): void {
   // //   this.apartmentService.deleteApartment(this.apartmentId).subscribe(
@@ -346,7 +364,6 @@ export class OwnerApartmentManagementComponent implements OnInit {
   }
 
   showTagList = false;
-  availableTags: string[] = ['Tag1', 'Tag2', 'Tag3', 'Tag4'];
   selectedTags: string[] = [];
 
   toggleTagList() {
