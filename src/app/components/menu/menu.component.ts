@@ -1,25 +1,50 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';  // Import AuthService
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent {
-  @Input() menuType: 'renter' | 'owner' | 'unregistered' = 'unregistered';
+export class MenuComponent implements OnInit {
+  menuType: 'renter' | 'owner' | 'unregistered' = 'unregistered';
 
-  constructor(private router: Router, private authService: AuthService) {}  // Inject AuthService
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
+
+  ngOnInit() {
+    const userIdString = localStorage.getItem("user_id");
+    if (!userIdString) {
+      this.menuType = 'unregistered';
+      return;
+    }
+
+    const userId: number = parseInt(userIdString, 10);
+    this.userService.getUserRoles(userId).subscribe(
+      roles => {
+        if (roles.includes('TENANT')) {
+          this.menuType = 'renter';
+        } else if (roles.includes('OWNER')) {
+          this.menuType = 'owner';
+        } else {
+          this.menuType = 'unregistered';
+        }
+      },
+      error => {
+        console.error('Error fetching user roles:', error);
+        this.menuType = 'unregistered';
+      }
+    );
+  }
 
   handleMenuItemClicked(link: string): void {
     console.log('Menu item clicked:', link);
-    if (link === '/logout') {
-      this.authService.logout();  // Call logout from AuthService
-      this.router.navigate(['/login']);  // Redirect to login page after logout
-    } else {
-      this.router.navigate([link]);  // Normal navigation for other links
-    }
+      this.router.navigate([link]);
   }
 
   get menuItems(): MenuItem[] {
@@ -29,14 +54,14 @@ export class MenuComponent {
           { label: 'Informacja dodatkowa', link: `/${this.menuType}/${this.menuType}-hello` },
           { label: 'Moje mieszkania', link: `/${this.menuType}/${this.menuType}-apartments` },
           { label: 'Profil', link: `/${this.menuType}/${this.menuType}-account` },
-          { label: 'Wyloguj', link: '/logout' }  // Keep as a placeholder for handling in click
+          { label: 'Wyloguj', link: '/logout' }
         ];
       case 'owner':
         return [
           { label: 'Informacja dodatkowa', link: `/${this.menuType}/${this.menuType}-hello` },
           { label: 'Moje mieszkania', link: `/${this.menuType}/${this.menuType}-apartments` },
           { label: 'Profil', link: `/${this.menuType}/${this.menuType}-account` },
-          { label: 'Wyloguj', link: '/logout' }  // Keep as a placeholder for handling in click
+          { label: 'Wyloguj', link: '/logout' }
         ];
       case 'unregistered':
         return [

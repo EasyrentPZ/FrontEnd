@@ -23,4 +23,13 @@ export class UserService {
     const body = { currentPassword, newPassword };
     return this.http.post(endpoint, body);
   }
+
+  getUserRoles(userId: number): Observable<string[]> {
+    const rolesEndpoint = `${this.userEndpoint}/${userId}/roles`;
+    return this.http.get<any[]>(rolesEndpoint).pipe(
+      map((roles: any[]) => roles.map(role => role.name))
+    );
+  }
+
+
 }

@@ -36,9 +36,8 @@ export class AuthService {
     return this.loggedInUser;
   }
 
-  logout(): void {
-    localStorage.removeItem('token'); // Assuming token is stored in localStorage
-    this.loggedInUser = null; // Reset the user state
+  logout(): Observable<any> {
+    return this.http.post(`/api/v1/auth/logout`, {});
   }
 
   private initializeUserFromCookie(): void {

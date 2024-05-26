@@ -10,6 +10,7 @@ import { MarketOfferComponent } from './components/market-offer/market-offer.com
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { OwnerComponent } from './components/owner/owner.component';
 import { AuthGuard } from './guards/auth.guard';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'renter', loadChildren: () => import('./components/renter/renter.module').then(m => m.RenterModule), canActivate: [AuthGuard], data: { userType: 'tenant' }  },
   // { path: 'owner', loadChildren: () => import('./components/owner/owner.module').then(m => m.OwnerModule)},
   // { path: 'tenant', loadChildren: () => import('./components/renter/renter.module').then(m => m.RenterModule)},
+  { path: 'logout', component: LogoutComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
