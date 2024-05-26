@@ -3,6 +3,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; // Import FormsModule here
 
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
@@ -46,6 +47,7 @@ import { MenuModule } from './components/menu/menu.module';
     ToastModule,
     BrowserAnimationsModule,
     CommonModule,
+    FormsModule,
     MenuModule
   ],
   providers: [MessageService, AuthGuard],

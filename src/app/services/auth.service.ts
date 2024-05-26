@@ -22,6 +22,7 @@ export class AuthService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(loginEndpoint, loginForm, { headers, withCredentials: true }).pipe(
       tap((response: any) => {
+        localStorage.setItem('user_id', response.user_id);
         this.initializeUserFromCookie(); // Assuming cookie handling setup
       })
     );
