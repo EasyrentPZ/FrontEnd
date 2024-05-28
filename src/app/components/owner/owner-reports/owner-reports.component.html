@@ -1,15 +1,17 @@
 <div class="container">
 <div class="content flex-column-centered">
 <div class="fill-div">
-    <div class="report-header">
-      <div class="flex-row-centered report-header-image">
-        <img src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg" alt="Photo">
-      </div>
-      <div class="report-header-details">
-        <span class="header-details-title">{{property.name}}</span>
-        <span class="header-details-element">ul. {{property.streetName}} {{property.buildingNo}}</span>
-      </div>
+  <div *ngIf="property" class="report-header">
+    <div class="flex-row-centered report-header-image">
+      <!-- Use the safe navigation operator and default image fallback -->
+      <img [src]="property.photos?.[0]?.photo || 'https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg'" alt="Photo">
     </div>
+    <div class="report-header-details">
+      <!-- Safely access property details -->
+      <span class="header-details-title">Mieszkanie {{ property.area }} m<sup>2</sup></span>
+      <span class="header-details-element">ul. {{ property.streetName }} {{ property.address }}</span>
+    </div>
+  </div>
     <div class="sections-wrapper">
       <div id="announcements">
         <div class="section-header div-with-bottom-border">Ogłoszenia</div>
@@ -39,33 +41,36 @@
             <div class="single-announcement-details">
               <div class="single-announcement-header">Zgłoszenie nr {{report.id}}</div>
               <div class="report-status">
-                <label for="statusSelect">Status:</label>
-                <select class="statusSelect" name="status" (change)="updateBackgroundColor($event)">
-                  <option value="opened" style="background-color: #5cb85c;">Opened</option>
-                  <option value="solved" style="background-color: #f0ad4e;">Solved</option>
-                  <option value="closed" style="background-color: #d9534f;">Closed</option>
-              </select>
+                <label for="statusSelect{{report.id}}">Status:</label>
+                <select [id]="'statusSelect' + report.id"
+                        [(ngModel)]="report.status"
+                        class="statusSelect" name="status">
+                  <option [value]="'opened'" [style.backgroundColor]="'#5cb85c'">Opened</option>
+                  <option [value]="'solved'" [style.backgroundColor]="'#f0ad4e'">Solved</option>
+                  <option [value]="'closed'" [style.backgroundColor]="'#d9534f'">Closed</option>
+                </select>
               </div>
               <div class="single-announcement-description">{{report.description}}</div>
             </div>
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </div>
 </div>
   
-<div id="announcement" class="popup big-popup" [ngClass]="{'show': isPopupVisible}">
+<div class="popup big-popup" [ngClass]="{'show': isPopupVisible}">
   <div class="popup-content">
     <span class="close-button" (click)="togglePopup()">&times;</span>
     <div class="flex-column-centered">
       <div class="form-title">Dodaj ogłoszenie</div>
-      <form class="popup-form flex-column-centered">
-        <label for="accouncement-title-input">Tytuł</label>
-        <input id="accouncement-title-input" name="report-description-input" class="form-input"/>
-        <label for="accouncement-description-input">Treść</label>
-        <textarea id="accouncement-description-input" name="report-description-input" class="form-input"></textarea>
+      <form class="popup-form flex-column-centered" (ngSubmit)="submitAnnouncement()">
+        <label for="announcement-title-input">Tytuł</label>
+        <input id="announcement-title-input" [(ngModel)]="newAnnouncement.title" name="title" class="form-input"/>
+        <label for="announcement-description-input">Treść</label>
+        <textarea id="announcement-description-input" [(ngModel)]="newAnnouncement.description" name="description" class="form-input"></textarea>
         <button type="submit" class="bill-button">Dodaj ogłoszenie</button>
       </form>
     </div>

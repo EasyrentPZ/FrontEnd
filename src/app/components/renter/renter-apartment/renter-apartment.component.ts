@@ -18,17 +18,14 @@ export class RenterApartmentComponent implements OnInit {
   apartment: any = null;
 
   announcements = [
-    new Announcement(2, "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor"),
-    new Announcement(2, "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor"),
-    new Announcement(2, "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor"),
-    new Announcement(2, "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor")
+    new Announcement( "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor"),
+    new Announcement( "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor"),
+    new Announcement( "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor"),
+    new Announcement( "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor")
   ];
 
   reports = [
-    new Report(3, "Awaria ogrzewania", "opened"),
-    new Report(3, "Awaria ogrzewania", "opened"),
-    new Report(3, "Awaria ogrzewania", "opened"),
-    new Report(3, "Awaria ogrzewania", "opened")
+
   ];
 
   isPopupVisible = false;
