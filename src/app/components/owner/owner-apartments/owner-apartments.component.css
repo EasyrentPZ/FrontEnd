@@ -108,6 +108,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .add-apartment-button{
@@ -119,8 +120,11 @@
 }
 
 .apartment-photo {
-  width: 120px;  /* Set fixed width */
-  height: 80px;  /* Set fixed height */
+
   object-fit: cover;  /* Ensures the image covers the area without distorting aspect ratio */
   border-radius: 4px;  /* Optional: adds rounded corners to your images */
+}
+
+.apartment-action img{
+  cursor: pointer;
 }

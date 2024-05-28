@@ -15,7 +15,7 @@ export class ApartmentService {
 
   getApartments(filters: any): Observable<PropertyApiResponse> {
     return this.http.get<PropertyApiResponse>(
-      `${this.baseUrl}property?${this.serializeFilters(filters)}`, 
+      `${this.baseUrl}public?${this.serializeFilters(filters)}`, 
       { withCredentials: true }  // Include credentials with the request
     ).pipe(
       catchError(this.handleError)

@@ -5,7 +5,7 @@
       <div *ngFor="let property of properties" class="apartment-view div-with-bottom-border">
         <img class="apartment-photo" [src]="property.photos?.[0]?.photo || 'https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg'" alt="Photo">
         <div class="flex-item apartment-details">
-          <h2>{{property.name}}</h2>
+          <h2>Mieszkanie</h2>
           <span>ul. {{property.streetName}} {{property.address}}</span>
           <div class="apartment-action">
             <img src="assets/icons/Edit-apartment.svg" alt="Edit apartment" (click)="editApartment(property.id)" />

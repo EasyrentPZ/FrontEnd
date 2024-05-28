@@ -51,16 +51,16 @@ export class MenuComponent implements OnInit {
     switch (this.menuType) {
       case 'renter':
         return [
-          { label: 'Informacja dodatkowa', link: `/${this.menuType}/${this.menuType}-hello` },
+          //{ label: 'Informacja dodatkowa', link: `/${this.menuType}/${this.menuType}-hello` },
           { label: 'Moje mieszkania', link: `/${this.menuType}/${this.menuType}-apartments` },
-          { label: 'Profil', link: `/${this.menuType}/${this.menuType}-account` },
+          { label: 'Profil', link: `/user-profile` },
           { label: 'Wyloguj', link: '/logout' }
         ];
       case 'owner':
         return [
-          { label: 'Informacja dodatkowa', link: `/${this.menuType}/${this.menuType}-hello` },
+          //{ label: 'Informacja dodatkowa', link: `/${this.menuType}/${this.menuType}-hello` },
           { label: 'Moje mieszkania', link: `/${this.menuType}/${this.menuType}-apartments` },
-          { label: 'Profil', link: `/${this.menuType}/${this.menuType}-account` },
+          { label: 'Profil', link: `/user-profile` },
           { label: 'Wyloguj', link: '/logout' }
         ];
       case 'unregistered':
