@@ -46,6 +46,6 @@ export class OwnerApartmentsComponent implements OnInit {
   }
 
   addApartment() {
-      throw new Error('Method not implemented.');
+      this.router.navigate([`owner/owner-apartment-add`])
     }
 }

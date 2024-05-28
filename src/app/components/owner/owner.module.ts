@@ -11,7 +11,8 @@ import { OwnerReportsComponent } from './owner-reports/owner-reports.component';
 import { OwnerBillsComponent } from './owner-bills/owner-bills.component';
 import { OwnerAccountComponent } from './owner-account/owner-account.component';
 import { OwnerApartmentManagementComponent } from './owner-apartment-management/owner-apartment-management.component';
-import { FormsModule } from '@angular/forms'; 
+import { OwnerApartmentAddComponent } from './owner-apartment-add/owner-apartment-add.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'; 
 import { MenuModule } from '../menu/menu.module';
 
 
@@ -24,12 +25,14 @@ import { MenuModule } from '../menu/menu.module';
     OwnerReportsComponent,
     OwnerAccountComponent,
     OwnerApartmentManagementComponent,
+    OwnerApartmentAddComponent,
     OwnerBillsComponent
   ],
   imports: [
     CommonModule,
     OwnerRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MenuModule
   ]
 })

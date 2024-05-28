@@ -22,6 +22,7 @@ export class AuthService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(loginEndpoint, loginForm, { headers, withCredentials: true }).pipe(
       tap((response: any) => {
+        localStorage.setItem('user_id', response.user_id);
         this.initializeUserFromCookie(); // Assuming cookie handling setup
       })
     );
@@ -35,9 +36,8 @@ export class AuthService {
     return this.loggedInUser;
   }
 
-  logout(): void {
-    localStorage.removeItem('token'); // Assuming token is stored in localStorage
-    this.loggedInUser = null; // Reset the user state
+  logout(): Observable<any> {
+    return this.http.post(`/api/v1/auth/logout`, {});
   }
 
   private initializeUserFromCookie(): void {

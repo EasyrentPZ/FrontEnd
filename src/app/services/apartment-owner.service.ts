@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { PropertyApiResponse } from '../interfaces/property-api-response'; // Ensure this path is correct
 import { Property } from '../shared/Property'; // Assuming you have a detailed single property interface or class
 

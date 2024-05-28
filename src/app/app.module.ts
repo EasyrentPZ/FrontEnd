@@ -3,6 +3,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; // Import FormsModule here
 
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
@@ -23,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from 'primeng/api';
 import { AuthGuard } from './guards/auth.guard';
 import { MenuModule } from './components/menu/menu.module';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { MenuModule } from './components/menu/menu.module';
     HomeComponent,
     MarketSearchComponent,
     MarketOfferComponent,
-    UserProfileComponent  
+    UserProfileComponent,
+    LogoutComponent  
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { MenuModule } from './components/menu/menu.module';
     ToastModule,
     BrowserAnimationsModule,
     CommonModule,
+    FormsModule,
     MenuModule
   ],
   providers: [MessageService, AuthGuard],
