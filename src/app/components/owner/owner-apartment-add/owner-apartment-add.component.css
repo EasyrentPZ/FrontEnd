@@ -461,10 +461,10 @@ textarea{
 }
 
 .tag-section{
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 5%;
+  margin: 5px 5%;
 }
 
 .tag{
@@ -483,6 +483,7 @@ textarea{
 }
 
 .tag-list{
+  margin: 5px 0;
   background-color: white;
 }
 

@@ -35,10 +35,12 @@
           </div>
           <div class="results-area custom-scrollbar">
             <div *ngFor="let property of properties" class="result div-with-bottom-border">
-              <img *ngIf="property.photos && property.photos.length > 0" 
-                   [src]="property.photos[0].photo" 
-                   alt="Property Photo"
-                   class="result-photo">
+              <div class="result-photo-container">
+                <img *ngIf="property.photos && property.photos.length > 0" 
+                     [src]="property.photos[0].photo" 
+                     alt="Property Photo"
+                     class="result-photo">
+              </div>
               <div class="flex-item result-details">
                 <h2>Mieszkanie - {{ property.streetName }}</h2>
                 <span>Koszt najmu: {{ property.rentAmount }} PLN/msc</span>

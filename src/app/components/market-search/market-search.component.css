@@ -145,8 +145,13 @@
   
 }
 
-.result-photo{
-  height: 20vh;
+.result-photo-container {
+  width: 30%; /* Adjust the width as needed */
+}
+
+.result-photo {
+  width: 100%;
+  height: auto;
   border-radius: 20px;
 }
 

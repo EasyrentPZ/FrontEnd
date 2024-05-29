@@ -20,6 +20,13 @@ body {
   flex-direction: column;
 }
 
+.flex-column-fully-centered{
+  display: flex;
+  align-items: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
 /*divs with right border: 10% smaller than div, centered*/
 
 .div-with-right-border {
@@ -96,3 +103,20 @@ background-color: #000; /* Color of the border */
   background-color: rgba(52, 123, 139, 0.83);
 }
 
+.popup-form input{
+  font-size: 1.5em;
+  border-radius: 20px;
+  padding: 2px 20px;
+}
+
+
+.popup-content{
+  height: 100%;
+  margin-bottom: 20px;
+  
+}
+
+.big-popup{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  width: 40vw;
+}

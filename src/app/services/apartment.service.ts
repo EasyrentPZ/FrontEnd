@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { PropertyApiResponse } from '../interfaces/property-api-response';
 import { PropertyAddRequestDto } from '../interfaces/property-add-request-dto';
+import { PropertyDetail } from '../interfaces/property-detail';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,12 @@ export class ApartmentService {
     );
   }
 
+  getPropertyOwnerDetailById(id: number): Observable<PropertyDetail> {
+    return this.http.get<PropertyDetail>(`${this.baseUrl}property/owner/properties/${id}`, { withCredentials: true }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   addProperty(data: PropertyAddRequestDto): Observable<any> {
     const formData = new FormData();
     formData.append('address', data.address);
@@ -57,6 +64,43 @@ export class ApartmentService {
       catchError(this.handleError)
     );
   }
+
+  updateProperty(id: number, data: PropertyAddRequestDto): Observable<any> {
+    const formData = new FormData();
+    formData.append('address', data.address);
+    formData.append('area', data.area.toString());
+    formData.append('description', data.description);
+    formData.append('pets', data.pets.toString());
+    formData.append('city', data.city);
+    formData.append('rentAmount', data.rentAmount.toString());
+    formData.append('utilityCost', data.utilityCost.toString());
+    formData.append('deposit', data.deposit.toString());
+    formData.append('streetName', data.streetName);
+    formData.append('livingRooms', data.livingRooms.toString());
+    data.features.forEach(feature => formData.append('features', feature));
+    data.images.forEach(image => formData.append('images', image));
+  
+    const headers = new HttpHeaders().set('enctype', 'multipart/form-data');
+    return this.http.put<any>(`${this.baseUrl}property/update/${id}`, formData, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updatePropertyStatus(propertyId: number, statusId: number): Observable<any> {
+    const body = { statusId: statusId };
+    return this.http.put<any>(`${this.baseUrl}property/status/${propertyId}`, body)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  addTenant(data: { email: string, password: string, name: string, lastname: string, propertyId: number }): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}property/tenant/add`, data)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
 
   private serializeFilters(filters: any): string {
     return Object.keys(filters).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(filters[key])}`).join('&');
