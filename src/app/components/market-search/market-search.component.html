@@ -8,29 +8,28 @@
             <div class="filters div-with-right-border">
               <div class="filters-body custom-scrollbar">
               <h1>Sortuj</h1>
-              <select name="sort" id="sort" class="filter-input">
-                <option value="price-ASC">Cena rosnąco</option>
-                <option value="price-DESC">Cena malejąco</option>
+              <select name="sort" id="sort" class="filter-input" [(ngModel)]="sortOrder" (change)="applySorting()">
+                  <option value="price-ASC">Cena rosnąco</option>
+                  <option value="price-DESC">Cena malejąco</option>
               </select>
               <h1>Filtruj</h1>
-              <form method="GET" class="filters-form">
+              <form (submit)="applyFilters()">
                 <div class="filter-section">
-                  <span class="filter-header div-with-bottom-border">Miasto</span>
-                  <input name="city" id="city" class="filter-input" />
+                    <span class="filter-header div-with-bottom-border">Cena</span>
+                    <span class="filter-text">Od</span>
+                    <input type="number" [(ngModel)]="filters.priceFrom" name="price-from" class="filter-input" />
+                    <span class="filter-text">Do</span>
+                    <input type="number" [(ngModel)]="filters.priceTo" name="price-to" class="filter-input" />
                 </div>
                 <div class="filter-section">
-                  <span class="filter-header div-with-bottom-border">Cena</span>
-                  <span class="filter-text">Od</span>
-                  <input name="price-from" id="price-from" class="filter-input" />
-                  <span class="filter-text">Do</span>
-                  <input name="price-to" id="price-to" class="filter-input" />
-                  <span class="filter-header div-with-bottom-border">Powierzchnia</span>
-                  <span class="filter-text">Od</span>
-                  <input name="area-from" id="area-from" class="filter-input" />
-                  <span class="filter-text">Do</span>
-                  <input name="area-to" id="area-to" class="filter-input" />
+                    <span class="filter-header div-with-bottom-border">Powierzchnia</span>
+                    <span class="filter-text">Od</span>
+                    <input type="number" [(ngModel)]="filters.areaFrom" name="area-from" class="filter-input" />
+                    <span class="filter-text">Do</span>
+                    <input type="number" [(ngModel)]="filters.areaTo" name="area-to" class="filter-input" />
                 </div>
-              </form>
+                <button type="button" class="button-apply-filters" (click)="applyFilters()">Apply Filters</button>
+              </form>            
             </div>
           </div>
           <div class="results-area custom-scrollbar">
