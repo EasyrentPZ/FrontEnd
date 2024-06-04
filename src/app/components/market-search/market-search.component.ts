@@ -9,33 +9,60 @@ import { Property } from '../../shared/Property';
   styleUrls: ['./market-search.component.css']
 })
 export class MarketSearchComponent implements OnInit {
+  allProperties: Property[] = [];
   properties: Property[] = [];
+  filters: any = {
+    priceFrom: null,
+    priceTo: null,
+    areaFrom: null,
+    areaTo: null,
+  };
+  sortOrder: string = 'price-ASC';  // Default sorting order
 
   constructor(private apartmentService: ApartmentService) {}
 
   ngOnInit() {
     this.loadProperties({});
   }
-  
+
   loadProperties(filters: any) {
     this.apartmentService.getApartments(filters).subscribe(
       response => {
-        this.properties = response.content.map(item => new Property(
+        this.allProperties = response.content.map(item => new Property(
           item.id,
           item.name,
-          item.streetName || '', // Assuming street is directly returned
+          item.streetName || '',
           item.area || '',
           item.description,
           Number(item.rentAmount),
           Number(item.utilityCost),
           Number(item.deposit),
           item.livingRooms,
-          item.photos, // directly passing the photos array
-          item.address  // passing the complete address if available
+          item.photos,
+          item.address
         ));
+        this.applyFilters(); // Apply initial filters if any
+        this.applySorting(); // Apply default sorting
       },
       error => console.error('Error fetching properties:', error)
     );
   }
-  
+
+  applyFilters() {
+    this.properties = this.allProperties.filter(property => {
+      return (!this.filters.priceFrom || property.rentAmount >= this.filters.priceFrom) &&
+             (!this.filters.priceTo || property.rentAmount <= this.filters.priceTo) &&
+             (!this.filters.areaFrom || property.area >= this.filters.areaFrom) &&
+             (!this.filters.areaTo || property.area <= this.filters.areaTo);
+    });
+    this.applySorting(); // Reapply sorting whenever filters change
+  }
+
+  applySorting() {
+    if (this.sortOrder === 'price-ASC') {
+      this.properties.sort((a, b) => a.rentAmount - b.rentAmount);
+    } else if (this.sortOrder === 'price-DESC') {
+      this.properties.sort((a, b) => b.rentAmount - a.rentAmount);
+    }
+  }
 }
