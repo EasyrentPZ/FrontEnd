@@ -221,3 +221,25 @@
   align-items: center; /* Center items horizontally */
   text-align: center;
 }
+
+/* Add this to your existing CSS file */
+
+.button-apply-filters {
+  background-color: #365B6D; /* Dark blue shade from your menu bar */
+  color: white; /* White text color for contrast */
+  border: none; /* No border for a modern look */
+  padding: 10px 20px; /* Padding for a better touch area */
+  font-size: 1em; /* Matching font size */
+  border-radius: 20px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Subtle shadow for depth */
+  margin-top: 20px; /* Spacing from the last filter input */
+  margin-bottom: 20px; /* Spacing from the last filter input */
+
+}
+
+.button-apply-filters:hover {
+  background-color: #1a4144; /* Slightly darker shade for hover effect */
+  transform: translateY(-2px); /* Slight raise effect on hover */
+}
