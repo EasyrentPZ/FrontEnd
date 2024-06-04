@@ -14,22 +14,22 @@
               </div>
 
             <div class="bill-form-div">
-                <form id="bill-form" class="flex-column-centered">
+                <form id="bill-form" class="flex-column-centered" (submit)="addBill()">
                     <div class="flex-row-centered">
                         <div class="flex-column-centered bill-form-column">
                             <label for="invoice-number">Numer faktury</label>
-                            <input type="text" id="imie" name="invoice-number" class="bill-input" />
+                            <input [(ngModel)]="invoiceNumber" type="text" id="invoice-number" name="invoice-number" class="bill-input" />
                         </div>
                         <div class="flex-column-centered bill-form-column">
                             <label for="title">Tytuł</label>
-                            <input type="text" id="title" name="title" class="bill-input" />
+                            <input [(ngModel)]="billTitle" type="text" id="title" name="title" class="bill-input" />
                         </div>
                         <div class="flex-column-centered bill-form-column">
                             <label for="amount">Suma</label>
-                            <input type="text" id="amount" name="amount" class="bill-input" />
+                            <input [(ngModel)]="amount" type="text" id="amount" name="amount" class="bill-input" />
                         </div>
                         <div class="flex-column-centered bill-form-column">
-                            <input type="file" name="file" id="file" class="inputfile" />
+                            <input [(ngModel)]="invoice" (change)="onFileSelected($event)" type="file" name="file" id="file" class="inputfile" />
                             <label for="file">Wybierz plik</label>
                         </div>
                     </div>
@@ -42,9 +42,11 @@
                 <div class="bills-details">
                     <div *ngFor="let bill of bills" class="single-bill div-with-bottom-border">
                         <div class="single-bill-details">
-                            <div class="single-bill-header">{{bill.title}}</div>
-                            <div class="single-bill-description">{{bill.invoiceNumber}} {{bill.amount}}</div>
+                            <div class="single-bill-header">Tytuł: {{bill.title}}</div>
+                            <div class="single-bill-description">Nr faktury: {{bill.invoiceNumber}}</div>
+                            <div class="single-bill-description">Kwota: {{bill.amount}} PLN</div>
                         </div>
+                        <button class="bill-button flex-grow" (click)="downloadPdf(bill.id)">Pobierz</button>
                     </div>
                 </div>
             </div>

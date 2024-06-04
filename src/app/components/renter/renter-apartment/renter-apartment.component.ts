@@ -6,6 +6,8 @@ import { Property } from 'src/app/shared/Property';
 import { Owner } from 'src/app/shared/Owner';
 import { Announcement } from 'src/app/shared/Announcement';
 import { Report } from 'src/app/shared/Report';
+import { AnnouncementsService } from 'src/app/services/announcements.service';
+import { ReportsService } from 'src/app/services/reports.service';
 
 @Component({
   selector: 'app-renter-apartment',
@@ -13,20 +15,34 @@ import { Report } from 'src/app/shared/Report';
   styleUrls: ['./renter-apartment.component.css']
 })
 export class RenterApartmentComponent implements OnInit {
-  property = new Property(1, "Mieszkanie 60m2", "Spokojna", "9", "desc", 1000, 1000, 2000);
-  owner = new Owner("Paweł", "Kowalski", "999222111", "pawelk@gmail.com", "https://static2.strzelce360.pl/data/wysiwig/wqtv1fum7knmhdb.jpg")
-  apartment: any = null;
+  owner: any = null;
+  property: any = null;
+  loading = true;
+  reportDescription: string = '';
 
-  announcements = [
-    new Announcement( "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor"),
-    new Announcement( "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor"),
-    new Announcement( "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor"),
-    new Announcement( "Brak ciepłej wody w dniu XX.XX", "Lorem ipsum dolor")
+  announcements: Announcement[] = [
   ];
 
-  reports = [
-
+  reports: Report[] = [
   ];
+
+  ngOnInit(): void {
+    this.apartmentTenantService.getRenterProperty().subscribe((data: any) => {
+      this.property = data;
+      if (data.owner) {
+        this.owner = new Owner(this.property.owner.name, this.property.owner.lastname, this.property.owner.phoneNumber, this.property.owner.username, "https://static2.strzelce360.pl/data/wysiwig/wqtv1fum7knmhdb.jpg");
+      } else {
+        this.owner = new Owner("Paweł", "Kowalski", "999222111", "pawelk@gmail.com", "https://static2.strzelce360.pl/data/wysiwig/wqtv1fum7knmhdb.jpg");
+      }
+      this.announcementService.getPropertyAnnouncements(this.property.id).subscribe((data: any) =>{
+        this.announcements = data;
+      });
+      this.reportsService.getReportsByPropertyId(this.property.id).subscribe((data: any) =>{
+        this.reports = data;
+      });
+      this.loading = false;
+    });
+  }
 
   isPopupVisible = false;
   isPhonePopupVisible = false;
@@ -34,6 +50,25 @@ export class RenterApartmentComponent implements OnInit {
 
   togglePopup() {
     this.isPopupVisible = !this.isPopupVisible;
+  }
+
+  addReport() {
+    console.log("ppp");
+    const newReport = new Report(
+      null, // ID will be assigned by the server
+      this.reportDescription, // Description from the form
+      null, // Status initially null
+      "New Report", // Title (can be adjusted based on your requirement)
+      null, // Notifier name initially null
+      null, // Notifier last name initially null
+      null // Date initially null
+    );
+
+    this.reportsService.addReport(this.property.id, newReport).subscribe((data: Report) => {
+      this.reportDescription = '';
+      this.togglePopup();
+      window.location.reload();
+    });
   }
 
   togglePhonePopup() {
@@ -52,13 +87,11 @@ export class RenterApartmentComponent implements OnInit {
   }
   constructor(
     private apartmentTenantService: ApartmentTenantService,
-    private router: Router
+    private router: Router,
+    private announcementService: AnnouncementsService,
+    private reportsService :ReportsService
   ) {}
-  ngOnInit(): void {
-    this.apartmentTenantService.getApartments().subscribe((data: any) => {
-      this.apartment = data;
-    });
-  }
+  
   redirectToApartmentDetails(apartmentId: number): void {
     // Assuming the route to the apartment details page is '/apartment-details/:id'
     this.router.navigate(['/tenant/tenant-apartment-management', apartmentId]);

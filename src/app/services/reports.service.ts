@@ -23,8 +23,15 @@ export class ReportsService {
   }
 
   // Add a new report
-  addReport(report: Report): Observable<Report> {
-    return this.http.post<Report>(`${this.baseUrl}/ticket/add`, report, { headers: this.headers, withCredentials: true })
+  addReport(propertyId: number, report: Report): Observable<Report> {
+    const url = `${this.baseUrl}/ticket/add/${propertyId}`;
+    const requestBody = {
+      propertyId: propertyId,
+      title: report.title,
+      description: report.description
+      // Add other properties as needed
+    };
+    return this.http.post<Report>(url, requestBody, { headers: this.headers, withCredentials: true })
       .pipe(
         catchError(this.handleError)
       );

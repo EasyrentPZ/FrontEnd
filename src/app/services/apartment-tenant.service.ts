@@ -4,13 +4,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
+import { PropertyApiResponse } from '../interfaces/property-api-response';
+import { Property } from '../shared/Property';
+import { PropertyDetail } from '../interfaces/property-detail';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ApartmentTenantService {
-  private baseUrl = 'https://knowyourteacher.online:81/easyrent-api/v1';
+  private baseUrl = '/api/v1/';
 
 
   constructor(private http: HttpClient) { }
@@ -24,6 +27,11 @@ export class ApartmentTenantService {
     return this.http.get<any>(`${this.baseUrl}/tenant/apartments`, { headers }).pipe(
       catchError(this.handleError)
     );
+  }
+  
+  getRenterProperty(): Observable<PropertyDetail> {
+    return this.http.get<PropertyDetail>(`${this.baseUrl}property/tenant/property`, { withCredentials: true })
+      .pipe(catchError(this.handleError));
   }
 
 

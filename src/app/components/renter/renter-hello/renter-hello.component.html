@@ -1,7 +1,31 @@
-<div class="hello">
-    <h1>WITAJ</h1>
-    <div class="info_content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam maximus sapien in eros eleifend porta a non ex. Mauris volutpat augue eu ex porttitor luctus. Pellentesque rhoncus quam sit amet est volutpat iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus placerat condimentum dui, sed porta turpis porttitor sed. Nam a metus vel orci pretium placerat. Vestibulum eu augue tortor. Maecenas in neque tortor. Pellentesque orci eros, ullamcorper sit amet iaculis quis, elementum quis tellus. Suspendisse eget sem mattis, accumsan mi gravida, aliquet ligula. Aliquam pulvinar enim quis eros viverra bibendum.</p>
+<div class="container">
+    <div class="content flex-column-centered">
+        <div class="fill-div">
+            <div *ngIf="property" class="report-header">
+                <div class="flex-row-centered report-header-image">
+                  <!-- Use the safe navigation operator and default image fallback -->
+                  <img [src]="property.photos?.[0]?.photo || 'https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg'" alt="Photo">
+                </div>
+                <div class="report-header-details">
+                  <!-- Safely access property details -->
+                  <span class="header-details-title">Mieszkanie {{ property.area }} m<sup>2</sup></span>
+                  <span class="header-details-element">ul. {{ property.streetName }} {{ property.address }}</span>
+                </div>
+              </div>
+
+              <div id="bills">
+                <div class="section-header div-with-bottom-border">Historia rachunków</div>
+                <div class="bills-details">
+                    <div *ngFor="let bill of bills" class="single-bill div-with-bottom-border">
+                        <div class="single-bill-details">
+                            <div class="single-bill-header">Tytuł: {{bill.title}}</div>
+                            <div class="single-bill-description">Nr faktury: {{bill.invoiceNumber}}</div>
+                            <div class="single-bill-description">Kwota: {{bill.amount}} PLN</div>
+                        </div>
+                        <button class="bill-button flex-grow" (click)="downloadPdf(bill.id)">Pobierz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-

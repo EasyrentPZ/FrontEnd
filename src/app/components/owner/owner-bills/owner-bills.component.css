@@ -133,14 +133,19 @@
     padding: 5px 5%;
     text-align: left;
     display: flex;
+    align-items: center;
   }
   
   .single-bill-header{
     font-size: 1.4em;
     font-weight: 500;
-    color: red;
+    color: white;
   }
   
+  .flex-grow{
+    flex-grow: 1;
+  }
+
   .single-bill-details{
   width: 70%;
   }

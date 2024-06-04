@@ -1,11 +1,270 @@
-.hello h1 {
-    color: #2F575B; 
-    text-align: center;
-    letter-spacing: 3px;
+.report-status {
+  margin-top: 10px;
 }
- 
-.info_content {
-    font-size: 1.5em;
-    line-height: 1.8; 
-    letter-spacing: 2px;
-}  
+  
+.report-status label {
+  margin-right: 10px;
+}
+  
+.report-status select {
+  padding: 5px;
+  border: none;
+  border-radius: 30px;
+}
+  
+.report-status select[name="status"] {
+  color: #fff;
+  background-color: #5cb85c; 
+}
+  
+.report-status  select[name="status"] option[value="opened"] {
+  background-color: #5cb85c;
+}
+  
+.report-status  select[name="status"] option[value="solved"] {
+  background-color: #f0ad4e; 
+}
+  
+.report-status  select[name="status"] option[value="closed"] {
+  background-color: #d9534f; 
+}
+
+  
+.content {
+  display: flex;
+  text-align: center;
+  /* Wysokość ekranu minus wysokość menu */
+  width: 70%;
+  height: 90%;
+  background: rgba(54,91,109,0.88);
+  padding: 40px 10px;
+  color: white;
+}
+  
+.div-with-right-border {
+    position: relative; /* Needed for absolute positioning */
+}
+
+.div-with-right-border::after {
+    content: ""; /* Required for pseudo-element */
+    position: absolute; /* Position relative to the div */
+    top: 5%;
+    right: 0;
+    width: 2px; /* Width of the border */
+    height: 90%; /* Height of the border, adjust as needed */
+    background-color: #000; /* Color of the border */
+}
+
+
+.div-with-bottom-border {
+  position: relative; /* Needed for absolute positioning */
+}
+
+.div-with-bottom-border::after {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position relative to the div */
+  bottom: 0; /* Position at the bottom */
+  left: 5%;
+  width: 90%; /* Width of the border */
+  height: 2px; /* Height of the border, adjust as needed */
+  background-color: #000; /* Color of the border */
+}
+
+
+
+
+.report-header{
+  display: flex;
+  height: 40%;
+  width: 100%;
+}
+
+.report-header-details,
+.report-header-image{
+  padding: 40px 0;
+}
+
+.report-header-image{
+  width: 40%;
+  height: 100%;
+}
+
+.report-header-details{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+
+}
+
+.report-header-image img{
+  border-radius: 15px;
+  width: 100%;
+}
+
+.report-header-details span {
+  margin: 5px;
+  display: block; /* Display each <h3> and <span> element as a block to ensure it appears on a new line */
+  align-self: flex-start;
+}
+
+.header-details-title{
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.header-details-element{
+  font-size: 1.4em;
+}
+
+.ng-star-inserted{
+  height: 100%;
+  width:100%;
+}
+
+.section-header{
+  font-size: 2em;
+  font-weight: bold;
+  padding: 0 5%;
+  text-align: left;
+}
+
+.single-bill{
+  padding: 5px 5%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.single-bill-header{
+  font-size: 1.4em;
+  font-weight: 500;
+  color: white;
+}
+
+.flex-grow{
+  flex-grow: 1;
+}
+
+.single-bill-details{
+width: 70%;
+}
+.single-bill-actions{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.single-bill-actions-button{
+  font-size: 1.4em;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.delete-button{
+  color: red;
+}
+.fill-div{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.sections-wrapper{
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+#bills, #reports{
+  height: 50%;
+  overflow: auto;
+}
+
+.container {
+  background: rgb(247,247,247);
+  background: linear-gradient(180deg, rgba(247,247,247,1) 0%, rgba(241,241,244,1) 7%, rgba(109,152,174,1) 52%, rgba(64,122,151,1) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 100px; /* Wysokość menu */
+  padding-bottom: 10vh;
+}
+
+.flex-column-centered{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+  
+.content {
+  display: flex;
+  text-align: center;
+  /* Wysokość ekranu minus wysokość menu */
+  width: 70%;
+  height: 90%;
+  background: rgba(54,91,109,0.88);
+  padding: 30px 40px;
+  color: white;
+}
+
+#bill-form{
+  font-size: 1.3em;
+  gap:10px;
+}
+
+.bill-input{
+  background-color: F7F7F7;
+  border-radius: 30px;
+  border: none;
+  width: 90%;
+  font-size: 1em;
+  height: 1.8em;
+  padding: 0 10px;
+}
+
+.bill-form-column{
+  width: 25%;
+}
+
+.bill-button{
+  height: 1.7em;
+  font-size: 1.1em;
+  padding: auto 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.inputfile {
+width: 0.1px;
+height: 0.1px;
+opacity: 0;
+overflow: hidden;
+position: absolute;
+z-index: -1;
+}
+
+.inputfile + label {
+  padding: 3px;
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: red;
+}
+
+.inputfile + label {
+cursor: pointer; /* "hand" cursor */
+}

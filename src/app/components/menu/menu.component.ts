@@ -52,7 +52,8 @@ export class MenuComponent implements OnInit {
       case 'renter':
         return [
           //{ label: 'Informacja dodatkowa', link: `/${this.menuType}/${this.menuType}-hello` },
-          { label: 'Moje mieszkania', link: `/${this.menuType}/${this.menuType}-apartments` },
+          { label: 'Moje mieszkanie', link: `/${this.menuType}/${this.menuType}-apartments` },
+          { label: 'Moje rachunki', link: `/${this.menuType}/${this.menuType}-bills` },
           { label: 'Profil', link: `/user-profile` },
           { label: 'Wyloguj', link: '/logout' }
         ];

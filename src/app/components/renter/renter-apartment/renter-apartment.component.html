@@ -1,11 +1,16 @@
+<div *ngIf="loading">
+  Loading...
+</div>
+
 <div class="container">
   <div class="content flex-column-centered">
 
     <div class="apartment-header">
-      <img class="apartment-header-image" src="https://profesjonalista.net/wp-content/uploads/2019/08/z25104261IHCo-to-jest-mieszkanie-rozkladowe-.jpg" alt="Photo"/>
+      <img *ngIf="property && property.photos && property.photos.length > 0" class="apartment-header-image" [src]="property.photos[0]?.photo" alt="Photo"/>
+
       <div class="apartment-header-details">
-        <div class="header-details-title">{{property.name}}</div>
-        <div class="header-details-element">Umowa najmu do: xx.xx.xx</div>
+        <div class="header-details-title">{{property.streetName}} {{property.address}}</div>
+        <!-- <div class="header-details-element">Umowa najmu do: xx.xx.xx</div> -->
       </div>
     </div>
 
@@ -47,9 +52,10 @@
           <div class="announcements-details custom-scrollbar">
             <div *ngFor="let report of reports" class="single-announcement div-with-bottom-border">
               <div class="single-announcement-details">
-                <div class="single-announcement-header">Zgłoszenie nr </div>
+                <div class="single-announcement-header">Zgłoszenie nr {{report.id}}</div>
+                <div class="single-announcement-description">{{report.description}}</div>
                 <div class="report-status">
-                  Status: <span class="report-status-div">w trakcie naprawy</span>
+                  Status: <span class="report-status-div">{{report.status}}</span>
                 </div>
                 <div class="single-announcement-description"></div>
               </div>
@@ -67,9 +73,9 @@
     <span class="close-button" (click)="togglePopup()">&times;</span>
     <div class="flex-column-fully-centered">
       <div class="form-title">Zgłoś usterkę</div>
-      <form class="popup-form flex-column-centered">
+      <form class="popup-form flex-column-centered" (submit)="addReport()">
         <label for="report-description-input">Opis usterki</label>
-        <textarea id="report-description-input" name="report-description-input" class="form-input"></textarea>
+        <textarea [(ngModel)]="reportDescription" id="report-description-input" name="report-description-input" class="form-input"></textarea>
         <button type="submit" class="bill-button">Zgłoś</button>
       </form>
     </div>
@@ -80,7 +86,7 @@
   <div class="popup-content">
     <span class="close-button" (click)="togglePhonePopup()">&times;</span>
     <div class="flex-column-centered">
-      <div class="form-title">999 999 999</div>
+      <div class="form-title">{{owner.phone}}</div>
     </div>
   </div>
 </div>
@@ -89,7 +95,7 @@
   <div class="popup-content">
     <span class="close-button" (click)="toggleEmailPopup()">&times;</span>
     <div class="flex-column-centered">
-      <div class="form-title">example@example.com</div>
+      <div class="form-title">{{owner.email}}</div>
     </div>
   </div>
 </div>

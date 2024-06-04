@@ -110,4 +110,11 @@ export class ApartmentService {
     console.error('An error occurred:', error);
     throw error;
   }
+
+  addPayment(paymentData: FormData, apartmentId: number) {
+    const headers = new HttpHeaders().set('enctype', 'multipart/form-data');
+    return this.http.post<any>(`${this.baseUrl}property/update/${apartmentId}` + apartmentId, paymentData, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
 }
